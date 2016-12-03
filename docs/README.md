@@ -33,7 +33,7 @@ NotOKCupid is a web application inspired by OKCupid that will be built using Rub
 
 ## Design Docs
 
-- [View Wireframes](wireframes.md)
+- [View Wireframes](/wireframes)
 - [React Components](components.md)
 - [API Endpoints](api-endpoints.md)
 - [DB Schema](schema.md)
