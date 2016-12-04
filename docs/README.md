@@ -1,6 +1,6 @@
 # NotOKCupid
 
-[Heroku Link](notokcupid.herokuapp.com)
+[Heroku Link](https://notokcupid.herokuapp.com)
 
 [Production README](https://github.com/wesRobAndSin/NotOKCupid)
 
