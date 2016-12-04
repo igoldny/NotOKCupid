@@ -41,7 +41,7 @@ NotOKCupid is a web application inspired by OKCupid that will be built using Rub
 
 ## Implementation Timeline
 
-### Phase 1: Backend Setup and Front End User Authentication
+### Phase 1: Backend Setup and Front End User Authentication(2 days)
 **Objective:** Functioning rails project with front-end Authentication and home page CSS.
 
 * [x] Create rails project
@@ -52,27 +52,27 @@ NotOKCupid is a web application inspired by OKCupid that will be built using Rub
 * [ ] CSS styling home page
 
 
-### Phase 2: Profile Model, API, and Components
+### Phase 2: Profile Model, API, and Components (2 days)
 **Objectice:** Profiles can be created, read, updated, and destroyed through the API.
 
 * [ ] Create `Profile` MVC and other associated MVC's
 * [ ] CRUD with database
 * [ ] Continue to build redux cycles
 
-### Phase 3: Messaging and Liking
+### Phase 3: Messaging and Liking (2 days)
 **Objectice:** Users can message each other and like profiles.
 
 * [ ] Create `Message` and `Like` MVC's as well as other associated models
 * [ ] CRUD with database
 * [ ] Continue with redux and seeding database
 
-### Phase 4: Personality Questions
+### Phase 4: Personality Questions (1 day)
 **Objectice:** Users can answer questions to improve match results.
 
 * [ ] Create `Question` MVC and associated MVC's
 * [ ] Continue seeding and styling
 
-### Phase 5: Matching Users Based on Question Answers
+### Phase 5: Matching Users Based on Question Answers (1 day)
 **Objectice:** Matching algorithm that displays best matches, hopefully weighted by importance.
 
 * [ ] Matching algorithm
