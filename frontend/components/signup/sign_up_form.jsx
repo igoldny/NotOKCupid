@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router';
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class SignUpForm extends React.Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,12 +17,13 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    this.props.regInfo.age = parseInt(this.props.regInfo.age);
     const user = Object.assign(Object.assign({}, this.state), this.props.regInfo);
 
     this.props.signup(user)
       .then(() => {
         this.setState({ username: "", password: "" });
-        this.props.router.push("/");
+        this.props.router.push("/greeting");
       });
   }
 
@@ -55,4 +57,4 @@ class SignUpForm extends React.Component {
 }
 
 
-export default SignUpForm;
+export default withRouter(SignUpForm);

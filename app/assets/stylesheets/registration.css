@@ -216,3 +216,8 @@
   display: block;
   margin-top: 10px;
 }
+
+.reg-errors {
+  font-size: 12px;
+  color: red;
+}

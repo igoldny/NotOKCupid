@@ -14,7 +14,9 @@ class InitialRegistration extends React.Component {
       gender: "straight",
       sexuality: "woman",
       age: "",
-      location: ""
+      location: "",
+      age_errors: [],
+      zip_errors: [],
     };
 
     this.update = this.update.bind(this);
@@ -23,11 +25,7 @@ class InitialRegistration extends React.Component {
   }
 
   update(field) {
-    if (field === "age") {
-      return (e) => this.setState({ age: parseInt(e.currentTarget.value) });
-    } else {
-      return (e) => this.setState({ [field]: e.currentTarget.value });
-    }
+    return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
   handleFirstStage(e) {
@@ -43,12 +41,23 @@ class InitialRegistration extends React.Component {
   handleSecondStage(e) {
     e.preventDefault();
 
-    this.setState({
-      email: this.state.email,
-      age: this.state.age,
-      location: this.state.location,
-      regStage: 2
-    });
+
+    if (typeof parseInt(this.state.age) !== 'number' || this.state.age < 18 || this.state.age > 150) {
+      this.setState({zip_errors: ""});
+      this.setState({age_errors: "Please enter a valid age."});
+    } else if (typeof parseInt(this.state.location) !== 'number' || this.state.location.length !== 5) {
+      this.setState({age_errors: ""});
+      this.setState({zip_errors: "Please enter a valid zip code."});
+    } else {
+      this.setState({
+        email: this.state.email,
+        age: this.state.age,
+        location: this.state.location,
+        age_errors: "",
+        zip_errors: "",
+        regStage: 2,
+      });
+    }
   }
 
   errorList(property) {
@@ -78,7 +87,9 @@ class InitialRegistration extends React.Component {
           update={ this.update }
           email={ this.state.email }
           age={ this.state.age }
-          location={ this.state.location } />
+          location={ this.state.location }
+          age_errors={ this.state.age_errors }
+          zip_errors={ this.state.zip_errors }/>
       );
     } else if (this.state.regStage === 2) {
 
