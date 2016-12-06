@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import PhaseOne from './phase_one';
+import PhaseTwo from './phase_two';
+import SignUpFormContainer from './sign_up_form_container';
 
 
 class InitialRegistration extends React.Component {
@@ -7,109 +10,93 @@ class InitialRegistration extends React.Component {
     super(props);
     this.state = {
       regStage: 0,
-      username: "",
-      password: "",
       email: "",
-      gender: "male",
-      sexuality: "",
-      age: null,
+      gender: "straight",
+      sexuality: "woman",
+      age: "",
       location: ""
     };
 
     this.update = this.update.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFirstStage = this.handleFirstStage.bind(this);
     this.handleSecondStage = this.handleSecondStage.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    //
-    // const user = this.state;
-    // this.props.processForm(user)
-    //   .then(() => {
-    //     this.setState({ username: "", password: "" });
-    //     this.props.router.push("/");
-    //   });
-  }
-
   update(field) {
-    return (e) => this.setState({ [field]: e.currentTarget.value });
+    if (field === "age") {
+      return (e) => this.setState({ age: parseInt(e.currentTarget.value) });
+    } else {
+      return (e) => this.setState({ [field]: e.currentTarget.value });
+    }
   }
 
-  handleFirstStage() {
+  handleFirstStage(e) {
     e.preventDefault();
+
+    this.setState({
+      sexuality: this.state.sexuality,
+      gender: this.state.gender,
+      regStage: 1
+    });
   }
 
-  handleSecondStage() {
+  handleSecondStage(e) {
     e.preventDefault();
+
+    this.setState({
+      email: this.state.email,
+      age: this.state.age,
+      location: this.state.location,
+      regStage: 2
+    });
   }
 
-  // errorList(property) {
-  //   if (this.props.errors[property] === undefined) return [];
-  //   return this.props.errors[property].map((err, idx) => {
-  //     return <li key={idx}>{err}</li>;
-  //   });
-  // }
+  errorList(property) {
+    if (this.props.errors[property] === undefined) return [];
+    return this.props.errors[property].map((err, idx) => {
+      return <li key={idx}>{err}</li>;
+    });
+  }
 
   render() {
 
-    // const other_name = this.props.formType === 'Log In' ? 'Sign Up' : 'Log In';
-    // const other_url = this.props.formType === 'Log In' ? 'signup' : 'login';
 
     let currentForm;
 
     if (this.state.regStage === 0) {
       currentForm = (
-        <form onSubmit={this.handleFirstStage}>
-          I am a
-          <select
-            onChange={this.update("sexuality")}
-            value={this.state.sexuality}
-            className="sexuality-dropdown">
-            <option value="straight">Straight</option>
-            <option value="gay">Gay</option>
-            <option value="bisexual">Bisexual</option>
-          </select>
-
-          <select
-            onChange={this.update("gender")}
-            value={this.state.gender}
-            className="gender-dropdown">
-            <option value="woman">Woman</option>
-            <option value="man">Man</option>
-          </select>
-
-          <input type="submit" value="Continue" className="continue-button" />
-        </form>
+        <PhaseOne
+          submit={ this.handleFirstStage }
+          update={ this.update }
+          sexuality={ this.state.sexuality }
+          gender={ this.state.gender } />
       );
     } else if (this.state.regStage === 1) {
       currentForm = (
-        <form onSubmit={this.handleSecondStage}>
-          <input type="text"
-          value={this.state.email}
-          onChange={this.update("email")}
-          placeholder="Email"/>
+        <PhaseTwo
+          submit={ this.handleSecondStage }
+          update={ this.update }
+          email={ this.state.email }
+          age={ this.state.age }
+          location={ this.state.location } />
+      );
+    } else if (this.state.regStage === 2) {
 
-          <input type="text"
-          value={this.state.age}
-          onChange={this.update("age")}
-          placeholder="Age"/>
+      const regInfo = {
+        sexuality: this.state.sexuality,
+        gender: this.state.gender,
+        email: this.state.email,
+        age: this.state.age,
+        location: this.state.location
+      };
 
-          <input type="text"
-          value={this.state.location}
-          onChange={this.update("location")}
-          placeholder="Zip Code"/>
-
-          <input type="submit" value="Next" className="next-button" />
-        </form>
+      currentForm = (
+        <SignUpFormContainer regInfo={ regInfo } />
       );
     }
 
     return (
-      <div>
-        <ul>
-        </ul>
+      <div className="form-container">
         {currentForm}
       </div>
     );

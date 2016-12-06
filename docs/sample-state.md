@@ -31,15 +31,16 @@
       sexuality: "Straight",
       age: 25,
       location: 10001
-      messages: {
-        1: {
-          id: 1
-          body: "Hey I like you",
-          userId: 12
-        }
-      }
     }
   },
+  messages: {
+    1: {
+      id: 1
+      body: "Hey I like you",
+      userId: 12,
+      threadId: 3
+    }
+  }
   questions: {
     1: {
       id: 1

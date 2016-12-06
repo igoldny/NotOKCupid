@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204223254) do
+ActiveRecord::Schema.define(version: 20161206201327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20161204223254) do
     t.string   "location",        null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "summary"
+    t.text     "doing"
+    t.text     "good_at"
+    t.text     "favorites"
+    t.text     "thinking"
+    t.text     "friday"
+    t.text     "message_if"
+    t.integer  "prof_pic_id"
   end
 
   add_index "users", ["age"], name: "index_users_on_age", using: :btree

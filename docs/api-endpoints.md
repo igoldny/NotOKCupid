@@ -18,13 +18,6 @@
 - `POST /api/session`
 - `DELETE /api/session`
 
-### Profile Info
-
-- `GET /api/profile_infos`
-- `POST /api/profiles`
-- `GET /api/profiles/:id`
-- `PATCH /api/profiles/:id`
-
 ### Questions
 
 - `GET /api/questions`

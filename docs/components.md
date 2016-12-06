@@ -27,9 +27,9 @@
 |-------|-------------|
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
-| "/home" | "HomeContainer" |
-| "/home/user/:userId" | "UserContainer" |
-| "/home/messages | "MessagesContainer" |
-| "/home/messages/:threadId | "ThreadContainer" |
-| "/home/browse | "BrowseContainer" |
-| "/home/match/:matchId | "MatchContainer" |
+| "/" | "HomeContainer" |
+| "/user/:userId" | "UserContainer" |
+| "/messages | "MessagesContainer" |
+| "/messages/:threadId | "ThreadContainer" |
+| "/browse | "BrowseContainer" |
+| "/match/:matchId | "MatchContainer" |

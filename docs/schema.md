@@ -12,20 +12,14 @@ gender          | string    | not null, indexed
 sexuality       | string    | not null, indexed
 age             | integer   | not null, indexed
 location        | integer   | not null, indexed
-
-
-## profile_infos
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key, indexed
-summary     | text      | not null
-doing       | text      | not null
-good_at     | text      | not null
-favorites   | text      | not null
-thinking    | text      | not null
-friday      | text      | not null
-message_if  | text      | not null
+summary         | text      |
+doing           | text      |
+good_at         | text      |
+favorites       | text      |
+thinking        | text      |
+friday          | text      |
+message_if      | text      |
+prof_pic_url    | string   | 
 
 ## photos
 column name | data type | details
@@ -33,7 +27,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key, indexed
 photo_url   | string    | not null
-prof_pic    | boolean   | not null
 
 ## likes
 column name | data type | details

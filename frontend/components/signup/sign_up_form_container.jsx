@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, signup } from '../../actions/session_actions';
-import InitialRegistration from './initial_reg';
+import SignUpForm from './sign_up_form';
+import { signup } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => ({
-  loggedIn: !!state.session.currentUser,
+  loggedIn: Boolean(state.session.currentUser),
   errors: state.session.errors,
 });
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(InitialRegistration);
+)(SignUpForm);
