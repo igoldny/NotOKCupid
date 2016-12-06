@@ -130,21 +130,17 @@
 }
 
 .bottom-section {
-  position: relative;
 }
 
 .image-container {
   text-align: center;
-  max-width: 1140px;
   min-width: 880px;
   color: #3260c7;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .image-box {
-  display: inline-block;
-  text-align: center;
   width: 250px;
   margin: 20px;
 }
