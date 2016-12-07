@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LogInModal from './log_in_modal';
-import { login } from '../../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 import { receiveModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login: user => dispatch(login(user)),
   setModal: modal => dispatch(receiveModal(modal)),
+  clearErrors: errors => dispatch(clearErrors(errors))
 });
 
 export default connect(

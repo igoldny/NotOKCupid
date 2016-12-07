@@ -34,6 +34,7 @@ class LogInModal extends React.Component {
     e.preventDefault();
 
     this.props.setModal(false);
+    this.props.clearErrors();
   }
 
   render() {
@@ -53,6 +54,9 @@ class LogInModal extends React.Component {
             onChange={this.update("password")}
             placeholder="Password"
             className="sign-in-password-box"/><br></br>
+
+          <p className="sign-in-errors">{this.props.errors.base}</p>
+
 
 
           <input type="submit" value="Let's go" className="sign-in-button" />
