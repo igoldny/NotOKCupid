@@ -52,7 +52,7 @@ class InitialRegistration extends React.Component {
       currentErrors.zip_errors = "Please enter a valid zip code.";
       currentErrors.errors = true;
     }
-    
+
     if (Object.keys(currentErrors).length === 0) {
       currentErrors.errors = false;
       currentErrors.age_errors = "";
@@ -82,13 +82,6 @@ class InitialRegistration extends React.Component {
     e.preventDefault();
 
     this.checkForErrors(this.checkToMoveOn);
-  }
-
-  errorList(property) {
-    if (this.props.errors[property] === undefined) return [];
-    return this.props.errors[property].map((err, idx) => {
-      return <li key={idx}>{err}</li>;
-    });
   }
 
   render() {
@@ -137,6 +130,5 @@ class InitialRegistration extends React.Component {
     );
   }
 }
-// {this.errorList("errors")}
 
 export default withRouter(InitialRegistration);
