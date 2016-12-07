@@ -1,19 +1,30 @@
 import React from 'react';
-import InitialRegistrationContainer from './signup/initial_reg_container';
+import InitialRegistrationContainer from './initial_reg_container';
+import { withRouter } from 'react-router';
 
-class IndexPage extends React.Component {
-  constructor() {
-    super();
+
+class RegPage extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
 
-
+    this.props.setModal(true);
   }
 
+  handleGuest(e) {
+    e.preventDefault();
+
+    this.props.login({ username: "guest", password: "guest123"})
+      .then(() => {
+        this.props.router.push("/");
+      });
+  }
 
   render() {
     return (
@@ -79,4 +90,4 @@ class IndexPage extends React.Component {
   }
 }
 
-export default IndexPage;
+export default withRouter(RegPage);

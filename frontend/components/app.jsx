@@ -1,12 +1,23 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
-import InitialRegistrationContainer from './signup/initial_reg_container';
+import LogInModalContainer from './signup/log_in_modal_container';
+import { connect } from 'react-redux';
 
+const App = ({children, modal}) => {
+  const modalEl = modal ? <LogInModalContainer /> : null;
 
-const App = ({children}) => (
-  <div>
-    {children}
-  </div>
-);
+  return (
+    <div>
+      {children}
+      { modalEl }
+    </div>
+  );
+}
 
-export default App;
+const mapStateToProps = (state) => ({
+  modal: state.modal,
+});
+
+export default connect(
+  mapStateToProps,
+)(App)

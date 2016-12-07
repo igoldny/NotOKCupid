@@ -17,7 +17,8 @@
 
 class User < ActiveRecord::Base
 
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token, :email, presence: true
+  validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :age, inclusion: { in: 18..150 }
   validates :location, length: { is: 5 }

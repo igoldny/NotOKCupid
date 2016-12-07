@@ -12,7 +12,7 @@ class Greeting extends React.Component {
   handleLogOut(e) {
     e.preventDefault();
 
-    this.props.logout().then(this.props.router.push("/signup"));
+    this.props.logout().then(() => this.props.router.push("/signup"));
   }
 
   render() {

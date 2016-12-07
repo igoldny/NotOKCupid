@@ -1,22 +1,36 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
+import { Router, Route, IndexRedirect, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import InitialRegistration from './signup/initial_reg';
-import IndexPage from './index.jsx';
+import RegPageContainer from './signup/reg_page_container';
 import GreetingContainer from './greeting/greeting_container';
 
-const Root = ({store}) => (
-  <Provider store={ store }>
-    <Router history={ hashHistory }>
-      <Route path="/" component={ App }>
-        <IndexRedirect to="/signup" />
-        <Route path="/signup" component={IndexPage}/>
-        <Route path="/greeting" component={GreetingContainer} />
-      </Route>
-    </Router>
-  </Provider>
-);
-// <Route path="/login" component={ LogInForm } />;
+const Root = ({store}) => {
+
+  function _redirectIfLoggedIn(nextState, replace) {
+    if (store.getState().session.currentUser) {
+      replace("/")
+    }
+  }
+
+  function _redirectIfNotLoggedIn(nextState, replace) {
+    if (!store.getState().session.currentUser) {
+      replace("/signup")
+    }
+  }
+
+  return (
+    <Provider store={ store }>
+      <Router history={ hashHistory }>
+        <Route path="/" component={ App }>
+          <IndexRoute component={ GreetingContainer } onEnter={ _redirectIfNotLoggedIn }/>
+          <Route path="/signup" component={ RegPageContainer } onEnter={ _redirectIfLoggedIn } />
+        </Route>
+      </Router>
+    </Provider>
+  );
+}
+
 
 export default Root;

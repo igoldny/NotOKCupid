@@ -15,13 +15,16 @@ class InitialRegistration extends React.Component {
       sexuality: "woman",
       age: "",
       location: "",
-      age_errors: [],
-      zip_errors: [],
+      errors: false,
+      age_errors: "",
+      zip_errors: "",
     };
 
     this.update = this.update.bind(this);
     this.handleFirstStage = this.handleFirstStage.bind(this);
     this.handleSecondStage = this.handleSecondStage.bind(this);
+    this.checkForErrors = this.checkForErrors.bind(this);
+    this.checkToMoveOn = this.checkToMoveOn.bind(this);
   }
 
   update(field) {
@@ -38,16 +41,30 @@ class InitialRegistration extends React.Component {
     });
   }
 
-  handleSecondStage(e) {
-    e.preventDefault();
+  checkForErrors(cb) {
+    const currentErrors = {};
 
+    if (isNaN(this.state.age) || this.state.age < 18 || this.state.age > 150) {
+      currentErrors.age_errors = "Please enter a valid age.";
+      currentErrors.errors = true;
+    }
+    if (isNaN(this.state.location) || this.state.location.length !== 5) {
+      currentErrors.zip_errors = "Please enter a valid zip code.";
+      currentErrors.errors = true;
+    }
+    
+    if (Object.keys(currentErrors).length === 0) {
+      currentErrors.errors = false;
+      currentErrors.age_errors = "";
+      currentErrors.zip_errors = "";
+    }
 
-    if (typeof parseInt(this.state.age) !== 'number' || this.state.age < 18 || this.state.age > 150) {
-      this.setState({zip_errors: ""});
-      this.setState({age_errors: "Please enter a valid age."});
-    } else if (typeof parseInt(this.state.location) !== 'number' || this.state.location.length !== 5) {
-      this.setState({age_errors: ""});
-      this.setState({zip_errors: "Please enter a valid zip code."});
+    this.setState(currentErrors, cb);
+  }
+
+  checkToMoveOn() {
+    if (this.state.errors) {
+
     } else {
       this.setState({
         email: this.state.email,
@@ -55,9 +72,16 @@ class InitialRegistration extends React.Component {
         location: this.state.location,
         age_errors: "",
         zip_errors: "",
+        errors: false,
         regStage: 2,
       });
     }
+  }
+
+  handleSecondStage(e) {
+    e.preventDefault();
+
+    this.checkForErrors(this.checkToMoveOn);
   }
 
   errorList(property) {
