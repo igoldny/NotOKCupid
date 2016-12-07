@@ -10,7 +10,7 @@ User.destroy_all
 
 User.create(
   username: "guest",
-  password: "guest",
+  password: "guest1",
   sexuality: "straight",
   gender: "woman",
   email: "guest@guest.com",
