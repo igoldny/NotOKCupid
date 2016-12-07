@@ -19,7 +19,7 @@ favorites       | text      |
 thinking        | text      |
 friday          | text      |
 message_if      | text      |
-prof_pic_url    | string   | 
+prof_pic_id    | string   | 
 
 ## photos
 column name | data type | details

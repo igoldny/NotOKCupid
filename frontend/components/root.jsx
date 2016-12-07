@@ -4,7 +4,7 @@ import { Router, Route, IndexRedirect, IndexRoute, hashHistory } from 'react-rou
 import App from './app';
 import InitialRegistration from './signup/initial_reg';
 import RegPageContainer from './signup/reg_page_container';
-import GreetingContainer from './greeting/greeting_container';
+import ProfileContainer from './profile/profile_container';
 
 const Root = ({store}) => {
 
@@ -24,7 +24,7 @@ const Root = ({store}) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ GreetingContainer } onEnter={ _redirectIfNotLoggedIn }/>
+          <IndexRoute component={ ProfileContainer } onEnter={ _redirectIfNotLoggedIn }/>
           <Route path="/signup" component={ RegPageContainer } onEnter={ _redirectIfLoggedIn } />
         </Route>
       </Router>
