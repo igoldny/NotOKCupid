@@ -21,8 +21,8 @@ class RegPage extends React.Component {
     e.preventDefault();
 
     this.props.login({ username: "guest", password: "guest1"})
-      .then(() => {
-        this.props.router.push("/");
+      .then((user) => {
+        this.props.router.push(`/profile/${user.currentUser.id}`);
       });
   }
 

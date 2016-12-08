@@ -23,9 +23,9 @@ class SignUpForm extends React.Component {
     const user = Object.assign(Object.assign({}, this.state), this.props.regInfo);
 
     this.props.signup(user)
-      .then(() => {
+      .then((user) => {
         this.setState({ username: "", password: "" });
-        this.props.router.push("/");
+        this.props.router.push(`/profile/${user.currentUser.id}`);
       });
   }
 

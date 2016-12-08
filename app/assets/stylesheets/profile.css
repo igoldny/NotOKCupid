@@ -1,0 +1,131 @@
+.profile-page {
+  background: #fafbfd;
+  position: relative;
+}
+
+.site-nav {
+  border-bottom: 1px solid rgba(157,186,242,0.25);
+  min-width: 940px;
+  height: 70px;
+  background: #104da1;
+
+}
+
+.nav-logo {
+  float: left;
+  font-family: 'Oleo Script Swash Caps';
+  color: #5981ce;
+  font-size: 40px;
+  -webkit-text-stroke: 2px #e2f0fb;
+  margin: 10px 40px 0 30px;
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left-link {
+  float: left;
+  color: #d6e1f9;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 61px;
+  padding-top: 4px;
+  margin-right: 40px;
+}
+
+.nav-right {
+  float: right;
+  margin-right: 40px;
+}
+
+.nav-right-link {
+  float: left;
+  color: #d6e1f9;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 61px;
+  padding-top: 4px;
+  margin-left: 40px;
+}
+
+.profile-main {
+  width: auto;
+  margin: 0 auto;
+  background: none;
+  padding-bottom: 60px;
+}
+
+.profile-header {
+  padding-top: 50px;
+  margin-bottom: 30px;
+  background-color: #104da1;
+}
+
+.inner-header {
+  position: relative;
+  width: 1000px;
+  padding-left: 60px;
+  margin: 0 auto;
+}
+
+.user-info {
+  float: left;
+  margin-left: -30px;
+  margin-bottom: -30px;
+}
+
+.like-section {
+  position: relative;
+  float: right;
+  margin-top: 67px;
+}
+
+.profile-content {
+  padding-top: 30px;
+  min-height: 420px;
+  width: 1000px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-thumb {
+  float: left;
+  position: relative;
+  z-index: 2;
+  width: 180px;
+  height: 180px;
+}
+
+.user-basics {
+  position: relative;
+  float: left;
+  margin-top: 37px;
+  margin-left: 8px;
+  padding: 12px;
+  padding-top: 8px;
+  max-width: 370px;
+  white-space: nowrap;
+}
+
+.prof-pic {
+  border-radius: 50%;
+}
+
+.user-name {
+  color: #fff;
+  font-weight: 300;
+  font-size: 34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-details {
+  color: #e4edfd;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 26px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}

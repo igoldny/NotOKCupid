@@ -1,0 +1,122 @@
+.about-block {
+  margin-bottom: 45px;
+  color: #474d59;
+  font-size: 16px;
+}
+
+.about-button {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.about-normal {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.about-title {
+  float: left;
+}
+
+.edit-pencil {
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  color: #00d280;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+  vertical-align: top;
+  position: relative;
+  bottom: 7px;
+  margin-bottom: -18px;
+}
+
+.edit-pencil:before {
+  display: block;
+  content: "";
+  background-image: image-url("pencil.png");
+  height: 16px;
+  width: 16px;
+  margin-left: 14px;
+  margin-top: 14px;
+}
+
+.about-text {
+  display: block;
+  margin-top: 14px;
+
+}
+
+.placeholder-text {
+  margin-top: 14px;
+  color: #ccd0d9;
+}
+
+.edit-text {
+  display: block;
+  height: 262px;
+  width: 500px;
+  margin: 20px 10px 0 0;
+  background: #fff;
+}
+
+.inside-text {
+  border: 1px solid #ccd0d9;
+  border-radius: 5px;
+  padding: 20px;
+  width: 458px;
+  height: 158px;
+}
+
+.save-button {
+  text-align: center;
+  height: 45px;
+  width: 110px;
+  border: 1px solid #ccd0d9;
+  line-height: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: #00d280;
+  color: #fff;
+  margin: 0 10px 0 0;
+
+}
+
+.save-button:hover {
+  background-color: #00ea8f;
+}
+
+.cancel-button {
+  text-align: center;
+  height: 45px;
+  width: 110px;
+  border: 1px solid #ccd0d9;
+  line-height: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.cancel-button:hover {
+  background-color: #ebedf1;
+}
+// #f3f5f9; background for profile page
