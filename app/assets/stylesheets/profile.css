@@ -20,6 +20,10 @@
   margin: 10px 40px 0 30px;
 }
 
+.nav-logo:hover {
+  color: #6d9bf3;
+}
+
 .nav-left {
   float: left;
 }
@@ -32,6 +36,10 @@
   line-height: 61px;
   padding-top: 4px;
   margin-right: 40px;
+}
+
+.nav-left-link:hover {
+  color: #f5f8ff;
 }
 
 .nav-right {
@@ -49,6 +57,10 @@
   margin-left: 40px;
 }
 
+.nav-right-link:hover {
+  color: #f5f8ff;
+}
+
 .profile-main {
   width: auto;
   margin: 0 auto;
@@ -59,14 +71,15 @@
 .profile-header {
   padding-top: 50px;
   margin-bottom: 30px;
-  background-color: #104da1;
+  background-image: linear-gradient(#104da1, #0f4693);
 }
 
 .inner-header {
   position: relative;
-  width: 1000px;
-  padding-left: 60px;
+  padding-left: 80px;
+  padding-right: 60px;
   margin: 0 auto;
+  width: 1000px;
 }
 
 .user-info {
@@ -85,7 +98,7 @@
   padding-top: 30px;
   min-height: 420px;
   width: 1000px;
-  padding-left: 60px;
+  padding-left: 80px;
   padding-right: 60px;
   margin-left: auto;
   margin-right: auto;
@@ -115,7 +128,7 @@
 }
 
 .user-name {
-  color: #fff;
+  color: #e4edfd;
   font-weight: 300;
   font-size: 34px;
   overflow: hidden;
@@ -128,4 +141,60 @@
   font-size: 18px;
   line-height: 26px;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.tabs {
+  padding-left: 200px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(157,186,242,0.25);
+  margin: 0 auto;
+}
+
+.tabs > li {
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  margin: 0 30px;
+  padding: 15px
+}
+
+.tabs > li:hover {
+  border-bottom: 3px solid #559cff;
+}
+
+.selected-li {
+  border-bottom: 3px solid #104da1;
+}
+
+
+.profile-actions {
+  float: right;
+  margin-top: 67px;
+  color: #e4edfd;
+}
+
+.profile-like-button {
+  border: 1px solid rgba(157,186,242,0.25);
+  border-radius: 5px;
+  height: 46px;
+  margin-right: 20px;
+  width: 130px;
+  text-align: center;
+}
+
+.profile-like-button:hover {
+  border: 1px solid rgba(228,237,253,0.75);
+}
+
+.profile-message-button {
+  background: #4c7bd9;
+  border: 1px solid rgba(157,186,242,0.25);
+  border-radius: 5px;
+  height: 46px;
+  width: 130px;
+  text-align: center;
+}
+
+.profile-message-button:hover {
+  background: #426abb;
 }

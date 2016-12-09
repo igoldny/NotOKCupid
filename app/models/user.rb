@@ -27,6 +27,24 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :messages, {
+    class_name: :Message,
+    primary_key: :id,
+    foreign_key: :author_id
+  }
+
+  has_many :started_conversations, {
+    class_name: :Conversation,
+    primary_key: :id,
+    foreign_key: :user_one_id
+  }
+
+  has_many :received_conversations, {
+    class_name: :Conversation,
+    primary_key: :id,
+    foreign_key: :user_two_id
+  }
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 

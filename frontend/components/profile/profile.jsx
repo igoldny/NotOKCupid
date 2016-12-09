@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import AboutContainer from './about_container';
+import ProfileTabsContainer from './profile_tabs_container';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Profile extends React.Component {
     };
 
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleLike = this.handleLike.bind(this);
   }
 
 
@@ -24,6 +26,11 @@ class Profile extends React.Component {
     }
   }
 
+  handleLike(e) {
+    e.preventDefault();
+  }
+
+
   handleLogOut(e) {
     e.preventDefault();
 
@@ -31,7 +38,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (!this.props.profile) {
+    if (!this.props.profile || !this.props.currentUser) {
       return <div></div>;
     } else {
       return(
@@ -53,18 +60,16 @@ class Profile extends React.Component {
             <div>
               <ul className="nav-right group">
                 <li className="nav-right-link">
-                  <a href="/likes">Likes</a>
+                  <a href="#/likes">Likes</a>
                 </li>
                 <li className="nav-right-link">
-                  <a href="/messages">Messages</a>
+                  <a href="#/messages">Messages</a>
                 </li>
                 <li className="nav-right-link">
-                  <a href="/profile">Profile</a>
+                  <a href={"#/profile/"+this.props.currentUser.id}>Profile</a>
                 </li>
                 <li className="nav-right-link">
-                  <form onSubmit={this.handleLogOut}>
-                    <input type="submit" value="Log Out" />
-                  </form>
+                  <button onClick={this.handleLogOut}>Log Out</button>
                 </li>
               </ul>
             </div>
@@ -85,9 +90,13 @@ class Profile extends React.Component {
                     </h3>
                   </div>
                 </div>
+                <div className="profile-actions">
+                  <button className="profile-like-button" onClick={ this.handleLike }>Like</button>
+                  <button className="profile-message-button" onClick={ this.handleMessage }>Message</button>
+                </div>
               </div>
             </div>
-            <AboutContainer />
+            <ProfileTabsContainer />
           </div>
           <footer className="main-footer">
 
@@ -100,4 +109,4 @@ class Profile extends React.Component {
 
 
 
-export default Profile;
+export default withRouter(Profile);

@@ -42,7 +42,7 @@ class ProfileTabs extends React.Component {
         if(this.state.selectedIndex === idx) {
           return (
             <li key={idx} onClick={() => this.handleClick(tab, idx)} className="selected-li">
-              <p className="selected-tab">{tab}</p>
+              {tab}
             </li>
           );
         } else {
@@ -59,7 +59,7 @@ class ProfileTabs extends React.Component {
   render() {
     return (
       <div>
-        <ul>
+        <ul className="tabs group">
           {this.tabArray()}
         </ul>
         <div>{this.state.selectedContent}</div>

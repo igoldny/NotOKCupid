@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-button';
 
 class AboutAnswer extends React.Component {
   constructor(props) {
