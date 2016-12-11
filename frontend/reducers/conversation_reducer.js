@@ -3,11 +3,11 @@ import {
   RECEIVE_CONVERSATIONS,
   RECEIVE_ERRORS,
   CLEAR_ERRORS
-} from '../actions/profile_actions';
+} from '../actions/conversation_actions';
 
 const initialState = {
   conversations: {},
-  currentConversation: null,
+  currentConversation: {},
   errors: {}
 };
 

@@ -46,10 +46,10 @@ export const createMessage = (message) => {
 };
 
 
-export const receiveCurrentConversation = (conversation) => {
+export const receiveCurrentConversation = (currentConversation) => {
   return {
     type: RECEIVE_CURRENT_CONVERSATION,
-    conversation
+    currentConversation
   };
 };
 

@@ -1,0 +1,62 @@
+.main-messages {
+  border-top: 1px solid transparent;
+  background: #f3f5f9;
+  border-radius: 3px;
+  padding-bottom: 60px;
+  color: #474d59;
+  min-height: 800px;
+}
+
+.message-heading {
+  position: relative;
+  height: auto;
+  margin: 0 30px 40px;
+  padding-top: 27px;
+  border-bottom: 1px solid #ccd0d9;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.messages-title {
+  padding-bottom: 12px;
+  height: 40px;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.messages-tabs {
+  padding-left: -15px;;
+}
+
+.container-box {
+  margin: 0 30px;
+  position: relative;
+  height: 75px;
+  margin-top: 10px;
+  overflow: visible;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.conversation-details {
+  display: block;
+  float: left;
+  padding: 10px 20px;
+}
+
+.conversation-user {
+  margin: 0;
+}
+
+.conversation-last {
+  font-size: 13px;
+  color: #949aa6;
+  padding-top: 3px;
+}
+
+.conversation-updated {
+  float: right;
+  padding: 25px 20px 0;
+  font-size: 13px;
+  color: #949aa6;
+}

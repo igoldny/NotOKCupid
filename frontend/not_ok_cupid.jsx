@@ -9,7 +9,6 @@ import {
     createMessage
   } from './actions/conversation_actions';
 
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
