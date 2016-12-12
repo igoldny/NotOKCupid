@@ -118,7 +118,7 @@ class AboutAnswer extends React.Component {
 
   render() {
     if (!this.props.currentUser) {
-      return;
+      return null;
     } else if (this.props.currentUser.id === this.props.profile.id) {
       return (
         <div className="about-block">

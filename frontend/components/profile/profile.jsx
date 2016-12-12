@@ -10,12 +10,14 @@ class Profile extends React.Component {
     this.handleLike = this.handleLike.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
     this.profileActions = this.profileActions.bind(this);
+    this.likeButton = this.likeButton.bind(this);
   }
 
 
   componentDidMount() {
     this.props.fetchCurrentProfile(this.props.params.userId);
     this.props.fetchConversations();
+    this.props.fetchLikes(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,6 +28,22 @@ class Profile extends React.Component {
 
   handleLike(e) {
     e.preventDefault();
+
+    let liked = false;
+    let like_id = {};
+
+    Object.keys(this.props.likes).forEach((like) => {
+      if (this.props.likes[like].to_id === this.props.profile.id) {
+        liked = true;
+        like_id = like;
+      }
+    });
+
+    if (liked) {
+      this.props.destroyLike(like_id);
+    } else {
+      this.props.createLike({from_id: this.props.currentUser.id, to_id: this.props.profile.id});
+    }
   }
 
   handleMessage(e) {
@@ -55,13 +73,30 @@ class Profile extends React.Component {
     }
   }
 
+  likeButton() {
+    let liked = false;
+    Object.keys(this.props.likes).forEach((like) => {
+      if (this.props.likes[like].to_id === this.props.profile.id) {
+        liked = true;
+      }
+    });
+
+    const star = liked ? "★" : "☆";
+
+    if (liked) {
+      return <button className="profile-like-button liked" onClick={ this.handleLike }>{star}</button>;
+    } else {
+      return <button className="profile-like-button not-liked" onClick={ this.handleLike }>{star}</button>;
+    }
+  }
+
   profileActions() {
     if (this.props.currentUser.id === this.props.profile.id) {
       return <div></div>;
     } else {
       return (
         <div className="profile-actions">
-          <button className="profile-like-button" onClick={ this.handleLike }>Like</button>
+          {this.likeButton()}
           <button className="profile-message-button" onClick={ this.handleMessage }>Message</button>
         </div>
       );

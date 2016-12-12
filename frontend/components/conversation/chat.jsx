@@ -56,8 +56,8 @@ class Chat extends React.Component {
     } else {
       return (
         Object.keys(this.props.currentConversation.messages).map((message) => {
-          const message_text = this.props.currentConversation.messages[message].body;
-          const message_styling =
+          let message_text = this.props.currentConversation.messages[message].body;
+          let message_styling =
           this.props.currentConversation.messages[message].author_id === this.props.currentUser.id ?
           "user-styling" : "other-user-styling";
           return(

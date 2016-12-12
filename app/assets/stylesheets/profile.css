@@ -235,3 +235,7 @@
 .message-bubble:hover > .pointer {
   border-top: 10px solid #f5f8ff;
 }
+
+.liked {
+  background: #efc417;
+}
