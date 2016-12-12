@@ -16,17 +16,30 @@ class ConversationBox extends React.Component {
   }
 
   render() {
-    return(
-      <a href={"#/conversations/" + this.props.conversationId}>
-        <div className="container-box group">
-          <div className="conversation-details">
-            <h3 className="conversation-user">{this.otherUser()}</h3>
-            <p className="conversation-last">{this.props.conversation.last_message.body}</p>
+    if (this.props.conversation.last_message === null) {
+      return (
+        <a href={"#/conversations/" + this.props.conversationId}>
+          <div className="container-box group">
+            <div className="conversation-details">
+              <h3 className="conversation-user">{this.otherUser()}</h3>
+            </div>
           </div>
-          <p className="conversation-updated">{this.props.conversation.last_message.created_at}</p>
-        </div>
-      </a>
-    );
+        </a>
+      );
+    } else {
+
+      return(
+        <a href={"#/conversations/" + this.props.conversationId}>
+          <div className="container-box group">
+            <div className="conversation-details">
+              <h3 className="conversation-user">{this.otherUser()}</h3>
+              <p className="conversation-last">{this.props.conversation.last_message.body}</p>
+            </div>
+            <p className="conversation-updated">{this.props.conversation.last_message.created_at}</p>
+          </div>
+        </a>
+      );
+    }
   }
 }
 

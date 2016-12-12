@@ -8,11 +8,14 @@ class Profile extends React.Component {
     super(props);
 
     this.handleLike = this.handleLike.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
+    this.profileActions = this.profileActions.bind(this);
   }
 
 
   componentDidMount() {
     this.props.fetchCurrentProfile(this.props.params.userId);
+    this.props.fetchConversations();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,6 +26,46 @@ class Profile extends React.Component {
 
   handleLike(e) {
     e.preventDefault();
+  }
+
+  handleMessage(e) {
+    e.preventDefault();
+    let existingThread = {};
+
+    Object.keys(this.props.conversations).forEach((conversation) => {
+      if (
+        this.props.conversations[conversation].started_user.id === this.props.profile.id ||
+        this.props.conversations[conversation].received_user.id === this.props.profile.id
+      ) {
+        existingThread = conversation;
+      }
+    });
+
+    if (Object.keys(existingThread).length > 0) {
+      this.props.router.push(`/conversations/${existingThread}`);
+    } else {
+      const conversation = {
+        user_one_id: this.props.currentUser.id,
+        user_two_id: this.props.profile.id
+      };
+      this.props.createConversation(conversation)
+        .then((conversation) => {
+          this.props.router.push(`/conversations/${conversation.currentConversation.conversationId}`);
+        });
+    }
+  }
+
+  profileActions() {
+    if (this.props.currentUser.id === this.props.profile.id) {
+      return <div></div>;
+    } else {
+      return (
+        <div className="profile-actions">
+          <button className="profile-like-button" onClick={ this.handleLike }>Like</button>
+          <button className="profile-message-button" onClick={ this.handleMessage }>Message</button>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -46,10 +89,7 @@ class Profile extends React.Component {
                   </h3>
                 </div>
               </div>
-              <div className="profile-actions">
-                <button className="profile-like-button" onClick={ this.handleLike }>Like</button>
-                <button className="profile-message-button" onClick={ this.handleMessage }>Message</button>
-              </div>
+              {this.profileActions()}
             </div>
           </div>
           <TabsContainer

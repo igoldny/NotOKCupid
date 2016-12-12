@@ -39,7 +39,12 @@ class NavBar extends React.Component {
                 <a href="#/likes">Likes</a>
               </li>
               <li className="nav-right-link">
-                <a href="#/conversations">Messages</a>
+                <a href="#/conversations">
+                  <div className="message-bubble">
+                    <div className="block"></div>
+                    <div className="pointer"></div>
+                  </div>
+                </a>
               </li>
               <li className="nav-right-link">
                 <a href={"#/profile/"+this.props.currentUser.id}>Profile</a>

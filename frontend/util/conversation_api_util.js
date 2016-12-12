@@ -15,7 +15,8 @@ export const fetchConversations = () => {
 export const postConversation = (conversation) => {
   return $.ajax({
     method: "POST",
-    url: "api/conversations"
+    url: "api/conversations",
+    data: { conversation }
   });
 };
 

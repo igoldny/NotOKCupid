@@ -73,4 +73,4 @@ class Conversations extends React.Component {
 
 
 
-export default Conversations;
+export default withRouter(Conversations);

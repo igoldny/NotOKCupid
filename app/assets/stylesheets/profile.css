@@ -203,3 +203,35 @@
 .profile-message-button:hover {
   background: #426abb;
 }
+
+.block {
+  display: block;
+  margin-top: 15px;
+  height: 25px;
+  width: 35px;
+  background: #d6e1f9;
+  border-radius: 25px;
+}
+
+.message-bubble {
+  position: relative;
+}
+
+.pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 0px solid transparent;
+  border-top: 10px solid #d6e1f9;
+  border-right: 10px solid transparent;
+  left: 22px;
+  bottom: -6px;
+}
+
+.message-bubble:hover > .block {
+  background: #f5f8ff;
+}
+
+.message-bubble:hover > .pointer {
+  border-top: 10px solid #f5f8ff;
+}

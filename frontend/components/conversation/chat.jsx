@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router';
 
 class Chat extends React.Component {
   constructor(props) {
@@ -21,6 +22,9 @@ class Chat extends React.Component {
   }
 
   componentDidUpdate() {
+    if (!this.props.currentUser) {
+      return;
+    }
     var node = ReactDOM.findDOMNode(this.refs.myDiv);
     node.scrollTop = node.scrollHeight;
   }
@@ -32,40 +36,46 @@ class Chat extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (Object.keys(this.props.currentConversation.messages).length === 0) {
-
-    } else {
-      const newMessage = {
-        thread_id: this.props.currentConversation.conversationId,
-        body: this.state.textInput
-      };
-      this.props.createMessage(newMessage)
-        .then(() => {
-          this.setState({ textInput: "" });
-        });
-    }
+    const newMessage = {
+      thread_id: this.props.currentConversation.conversationId,
+      body: this.state.textInput
+    };
+    this.props.createMessage(newMessage)
+      .then(() => {
+        this.setState({ textInput: "" });
+      });
   }
 
   renderDisplay() {
-    return (
-      Object.keys(this.props.currentConversation.messages).map((message) => {
-        const message_text = this.props.currentConversation.messages[message].body;
-        const message_styling =
+    if (!this.props.currentConversation.messages) {
+      return (
+        <div className="chat-block group">
+
+        </div>
+      );
+    } else {
+      return (
+        Object.keys(this.props.currentConversation.messages).map((message) => {
+          const message_text = this.props.currentConversation.messages[message].body;
+          const message_styling =
           this.props.currentConversation.messages[message].author_id === this.props.currentUser.id ?
           "user-styling" : "other-user-styling";
-        return(
-          <div className="chat-block group" key={message}>
-            <p className={"chat-bubble " + message_styling} >
-              {message_text}
-            </p>
-          </div>
-        );
-      })
-    );
+          return(
+            <div className="chat-block group" key={message}>
+              <p className={"chat-bubble " + message_styling} >
+                {message_text}
+              </p>
+            </div>
+          );
+        })
+      );
+    }
   }
 
   otherUsername() {
-    if (this.props.currentUser.id === this.props.currentConversation.received_user.id) {
+    if (!this.props.currentUser) {
+      return null;
+    } else if (this.props.currentUser.id === this.props.currentConversation.received_user.id) {
       return this.props.currentConversation.started_user.username;
     } else {
       return this.props.currentConversation.received_user.username;
@@ -89,7 +99,9 @@ class Chat extends React.Component {
   }
 
   render() {
-    if (!this.props.currentConversation || Object.keys(this.props.currentConversation).length === 0) {
+    if (!this.props.currentConversation ||
+      Object.keys(this.props.currentConversation).length === 0 ||
+      !this.props.currentUser) {
       return <div></div>;
     } else {
       return(
@@ -107,4 +119,4 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+export default withRouter(Chat);

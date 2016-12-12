@@ -89,7 +89,10 @@ class AboutAnswer extends React.Component {
     let placeHolderText = this.state.answerText;
     let placeHolderBool = false;
 
-    if (this.props.currentUser.id === this.props.profile.id && this.state.answerText.length === 0) {
+    if (!this.state.answerText) {
+      placeHolderText = this.props.placeHolder;
+      placeHolderBool = true;
+    } else if (this.props.currentUser.id === this.props.profile.id && this.state.answerText.length === 0) {
       placeHolderText = this.props.placeHolder;
       placeHolderBool = true;
     }
@@ -114,7 +117,9 @@ class AboutAnswer extends React.Component {
   }
 
   render() {
-    if (this.props.currentUser.id === this.props.profile.id) {
+    if (!this.props.currentUser) {
+      return;
+    } else if (this.props.currentUser.id === this.props.profile.id) {
       return (
         <div className="about-block">
           {this.userEditTitle()}
