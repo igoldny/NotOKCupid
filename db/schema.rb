@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212020544) do
+ActiveRecord::Schema.define(version: 20161212164256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161212020544) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "likes", ["from_id"], name: "index_likes_on_from_id", unique: true, using: :btree
+  add_index "likes", ["from_id", "to_id"], name: "index_likes_on_from_id_and_to_id", unique: true, using: :btree
   add_index "likes", ["to_id"], name: "index_likes_on_to_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
@@ -46,16 +46,16 @@ ActiveRecord::Schema.define(version: 20161212020544) do
   add_index "messages", ["thread_id"], name: "index_messages_on_thread_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "gender",          null: false
-    t.string   "sexuality",       null: false
-    t.integer  "age",             null: false
-    t.string   "location",        null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "username",           null: false
+    t.string   "email",              null: false
+    t.string   "password_digest",    null: false
+    t.string   "session_token",      null: false
+    t.string   "gender",             null: false
+    t.string   "sexuality",          null: false
+    t.integer  "age",                null: false
+    t.string   "location",           null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.text     "summary"
     t.text     "doing"
     t.text     "good_at"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20161212020544) do
     t.text     "friday"
     t.text     "message_if"
     t.integer  "prof_pic_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["age"], name: "index_users_on_age", using: :btree

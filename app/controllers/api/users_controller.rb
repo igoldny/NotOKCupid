@@ -50,7 +50,8 @@ class Api::UsersController < ApplicationController
         :thinking,
         :friday,
         :message_if,
-        :prof_pic_id
+        :prof_pic_id,
+        :image
         )
   end
 

@@ -15,6 +15,7 @@ class Chat extends React.Component {
     this.chatForm = this.chatForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.otherUserId = this.otherUserId.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +83,16 @@ class Chat extends React.Component {
     }
   }
 
+  otherUserId() {
+    if (!this.props.currentUser) {
+      return null;
+    } else if (this.props.currentUser.id === this.props.currentConversation.received_user.id) {
+      return this.props.currentConversation.started_user.id;
+    } else {
+      return this.props.currentConversation.received_user.id;
+    }
+  }
+
   chatForm() {
     return(
       <form onSubmit={ this.handleSubmit } className="chat-form group">
@@ -106,7 +117,7 @@ class Chat extends React.Component {
     } else {
       return(
         <div className="main-chat">
-          <h2 className="chat-other-user">{this.otherUsername()}</h2>
+          <a href={"#/profile/" + this.otherUserId()}><h2 className="chat-other-user">{this.otherUsername()}</h2></a>
           <div ref="myDiv" className="chat-container group">
             {this.renderDisplay()}
           </div>

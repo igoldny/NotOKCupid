@@ -23,6 +23,10 @@
   margin: 20px 200px;
 }
 
+.chat-other-user:hover {
+  color: #97a1b5;
+}
+
 .chat-block {
   display: block;
 }

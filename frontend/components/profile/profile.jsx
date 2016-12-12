@@ -7,15 +7,25 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      imageFile: null,
+      imageUrl: null
+    };
+
     this.handleLike = this.handleLike.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
     this.profileActions = this.profileActions.bind(this);
     this.likeButton = this.likeButton.bind(this);
+    this.handleImage = this.handleImage.bind(this);
+    this.profPic = this.profPic.bind(this);
   }
 
 
   componentDidMount() {
-    this.props.fetchCurrentProfile(this.props.params.userId);
+    this.props.fetchCurrentProfile(this.props.params.userId)
+      .then(() => {
+        this.setState({ imageUrl: this.props.profile.image_url });
+      });
     this.props.fetchConversations();
     this.props.fetchLikes(this.props.currentUser.id);
   }
@@ -23,6 +33,24 @@ class Profile extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.params.userId !== nextProps.params.userId) {
       this.props.fetchCurrentProfile(nextProps.params.userId);
+    }
+  }
+
+  handleImage(e) {
+    e.preventDefault();
+
+    const user = this.props.profile;
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+      const formData = new FormData();
+      formData.append("user[image]", file);
+      this.props.updateImage(formData, user);
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
     }
   }
 
@@ -103,6 +131,22 @@ class Profile extends React.Component {
     }
   }
 
+  profPic() {
+    if (this.props.currentUser.id === this.props.profile.id) {
+      return (
+        <div>
+          <img className="prof-pic" src={this.state.imageUrl} ></img>
+          <label htmlFor="update-input" className="update-image-block">Update</label>
+          <input id="update-input" type="file" onChange={ this.handleImage } />
+        </div>
+      );
+    } else {
+      return (
+        <img className="prof-pic non-user" src={this.state.imageUrl} ></img>
+      );
+    }
+  }
+
   render() {
     if (!this.props.profile || !this.props.currentUser) {
       return <div></div>;
@@ -113,7 +157,7 @@ class Profile extends React.Component {
             <div className="inner-header group">
               <div className="user-info group">
                 <div className="user-thumb">
-                  <img className="prof-pic" src="http://www.bizreport.com/2011/02/03/android-logo-200x200.jpg"></img>
+                  {this.profPic()}
                 </div>
                 <div className="user-basics group">
                   <h2 className="user-name">
@@ -128,8 +172,8 @@ class Profile extends React.Component {
             </div>
           </div>
           <TabsContainer
-            tabs={ [ <AboutContainer />, <ul></ul>, <ul></ul> ] }
-            tabNames={ ["About", "Photos", "Questions"] }
+            tabs={ [ <AboutContainer />, <ul></ul> ] }
+            tabNames={ ["About", "Questions"] }
             styling="profile-tabs"
             />
         </main>
@@ -138,6 +182,7 @@ class Profile extends React.Component {
   }
 }
 
+// <div className="update-image-block" onClick={ this.handleImage }>Update</div>
 
 
 export default withRouter(Profile);

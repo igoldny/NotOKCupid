@@ -48,6 +48,15 @@
   margin: 0;
 }
 
+.other-user-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #ccc;
+  object-fit: cover;
+  cursor: pointer;
+}
+
 .conversation-last {
   font-size: 13px;
   color: #949aa6;

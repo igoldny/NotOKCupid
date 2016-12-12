@@ -36,9 +36,6 @@ class NavBar extends React.Component {
           <div>
             <ul className="nav-right group">
               <li className="nav-right-link">
-                <a href="#/likes">Likes</a>
-              </li>
-              <li className="nav-right-link">
                 <a href="#/conversations">
                   <div className="message-bubble">
                     <div className="block"></div>
@@ -47,7 +44,9 @@ class NavBar extends React.Component {
                 </a>
               </li>
               <li className="nav-right-link">
-                <a href={"#/profile/"+this.props.currentUser.id}>Profile</a>
+                <a href={"#/profile/"+this.props.currentUser.id}>
+                  <img src={this.props.currentUser.image_url} className="nav-prof-pic"/>
+                </a>
               </li>
               <li className="nav-right-link">
                 <button onClick={this.handleLogOut}>Log Out</button>

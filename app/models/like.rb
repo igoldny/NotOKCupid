@@ -1,7 +1,18 @@
+# == Schema Information
+#
+# Table name: likes
+#
+#  id         :integer          not null, primary key
+#  from_id    :integer          not null
+#  to_id      :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Like < ActiveRecord::Base
 
   validates :from_id, :to_id, presence: true
-  validates :from_id, uniqueness: { scope: :to_id }
+  validates_uniqueness_of :from_id, scope: [:to_id]
 
   belongs_to :liker, {
     class_name: :User,

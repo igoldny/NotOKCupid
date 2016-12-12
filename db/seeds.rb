@@ -23,8 +23,9 @@ user1 = User.create(
   thinking: "Who would ever date me?",
   friday: "Alone. Very alone.",
   message_if: "You don't respect yourself.",
-  prof_pic_id: 1
+  image: File.open("#{Rails.root}/app/assets/images/bernie_face.jpg")
   )
+
 
 user2 = User.create(
   username: "Wesley",
@@ -41,8 +42,9 @@ user2 = User.create(
   thinking: "My future.",
   friday: "With my girlfriend.",
   message_if: "Don't message me. I'm just a seed!",
-  prof_pic_id: 2
+  image: File.open("#{Rails.root}/app/assets/images/wes_headshot.jpg")
   )
+
 
 user3 = User.create(
   username: "ivyloren",

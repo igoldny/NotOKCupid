@@ -22,6 +22,20 @@
   color: #6d9bf3;
 }
 
+.nav-prof-pic {
+  margin-top: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ccc;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.nav-prof-pic:hover {
+  box-shadow: 0px 0px 5px #fff;
+}
+
 .nav-left {
   float: left;
 }
@@ -125,6 +139,44 @@
 
 .prof-pic {
   border-radius: 50%;
+  background: #ccc;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.non-user {
+  cursor: auto;
+}
+
+#update-input {
+  position: absolute;
+  left: -1000px;
+}
+
+.update-image-block {
+  position: absolute;
+  text-align: center;
+  height: 35px;
+  width: 110px;
+  top: 110px;
+  left: 35px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.user-thumb:hover .update-image-block {
+  border-radius: 5px;
+  background: #3260c7;
+  color: #fff;
+  opacity: 1;
+  cursor: pointer;
+  line-height: 35px;
+}
+
+.user-thumb:hover .update-image-block:hover {
+  background: #4c7bd9;
 }
 
 .user-name {

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id         :integer          not null, primary key
+#  author_id  :integer          not null
+#  thread_id  :integer          not null
+#  body       :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Message < ActiveRecord::Base
 
   validates :author_id, :thread_id, :body, presence: true
