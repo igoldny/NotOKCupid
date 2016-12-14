@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 import AboutContainer from './about_container';
 import TabsContainer from '../tabs/tabs_container';
+import QuestionsContainer from '../question/questions_container';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class Profile extends React.Component {
       });
     this.props.fetchConversations();
     this.props.fetchLikes(this.props.currentUser.id);
+    this.props.fetchQuestions();
+    this.props.fetchResponses();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -172,7 +175,7 @@ class Profile extends React.Component {
             </div>
           </div>
           <TabsContainer
-            tabs={ [ <AboutContainer />, <ul></ul> ] }
+            tabs={ [ <AboutContainer />, <QuestionsContainer questions={ this.props.questions }/> ] }
             tabNames={ ["About", "Questions"] }
             styling="profile-tabs"
             />
@@ -181,8 +184,5 @@ class Profile extends React.Component {
     }
   }
 }
-
-// <div className="update-image-block" onClick={ this.handleImage }>Update</div>
-
 
 export default withRouter(Profile);

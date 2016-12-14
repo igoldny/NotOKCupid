@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212164256) do
+ActiveRecord::Schema.define(version: 20161213150949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id", null: false
+    t.text     "body",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "order",       null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "user_one_id", null: false
@@ -44,6 +54,25 @@ ActiveRecord::Schema.define(version: 20161212164256) do
   add_index "messages", ["author_id"], name: "index_messages_on_author_id", using: :btree
   add_index "messages", ["body"], name: "index_messages_on_body", using: :btree
   add_index "messages", ["thread_id"], name: "index_messages_on_thread_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "answer_id",                       null: false
+    t.integer  "user_id",                         null: false
+    t.string   "acceptable_answers", default: [], null: false, array: true
+    t.integer  "importance"
+    t.text     "explanation"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "responses", ["answer_id"], name: "index_responses_on_answer_id", using: :btree
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",           null: false

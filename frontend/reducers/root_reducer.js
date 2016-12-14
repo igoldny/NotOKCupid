@@ -4,6 +4,8 @@ import ModalReducer from './modal_reducer';
 import ProfileReducer from './profile_reducer';
 import ConversationReducer from './conversation_reducer';
 import LikeReducer from './like_reducer';
+import QuestionReducer from './question_reducer';
+import ResponseReducer from './response_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
@@ -11,6 +13,8 @@ const rootReducer = combineReducers({
   currentProfile: ProfileReducer,
   conversations: ConversationReducer,
   likes: LikeReducer,
+  questions: QuestionReducer,
+  responses: ResponseReducer,
 });
 
 export default rootReducer;

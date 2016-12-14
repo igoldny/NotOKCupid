@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     foreign_key: :user_two_id
   }
 
+  has_many :responses
+
+  has_many :questions
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 
