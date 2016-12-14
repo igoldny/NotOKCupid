@@ -14,10 +14,6 @@ class Tabs extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({selectedContent: nextProps.tabs[0]});
-  }
-
   handleClick(idx) {
     this.setState({ selectedIndex: idx, selectedContent: this.props.tabs[idx] });
   }

@@ -48,21 +48,31 @@ class User < ActiveRecord::Base
     foreign_key: :author_id
   }
 
-  has_many :started_conversations, {
+  has_many :started_conversations,
+    -> {order "updated_at ASC"},
     class_name: :Conversation,
     primary_key: :id,
     foreign_key: :user_one_id
-  }
 
-  has_many :received_conversations, {
+
+  has_many :received_conversations,
+    -> {order "updated_at ASC"},
     class_name: :Conversation,
     primary_key: :id,
     foreign_key: :user_two_id
-  }
+
 
   has_many :responses
 
-  has_many :questions
+  has_many :answers, {
+    through: :responses,
+    source: :answer
+  }
+
+  has_many :questions, {
+    through: :responses,
+    source: :question
+  }
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

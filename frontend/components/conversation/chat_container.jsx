@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchConversation, createMessage, receiveCurrentConversation } from '../../actions/conversation_actions';
+import { fetchSingleConversation, createMessage, receiveCurrentConversation } from '../../actions/conversation_actions';
 import Chat from './chat';
 
 

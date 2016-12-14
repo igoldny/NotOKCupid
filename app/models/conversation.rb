@@ -13,11 +13,12 @@ class Conversation < ActiveRecord::Base
 
   validates :user_one_id, :user_two_id, presence: true
 
-  has_many :messages, {
+  has_many :messages,
+    -> {order "created_at ASC"},
     class_name: :Message,
     primary_key: :id,
     foreign_key: :thread_id
-  }
+
 
   belongs_to :started_user, {
     class_name: :User,

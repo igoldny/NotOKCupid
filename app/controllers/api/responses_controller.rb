@@ -1,7 +1,7 @@
 class Api::ResponsesController < ApplicationController
 
   def index
-    @responses = Response.includes(:question).where("user_id = ?", current_user.id)
+    @responses = Response.includes(:question).where("user_id = ?", response_params[:user_id])
 
     if @responses
       render :index
@@ -13,6 +13,7 @@ class Api::ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @question = @response.question
+    @responses = Response.includes(:question).where("user_id = ?", current_user.id)
 
     if @response.save
       render :index

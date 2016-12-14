@@ -16,7 +16,6 @@ class ConversationBox extends React.Component {
   }
 
   render() {
-
     if (this.props.conversation.last_message === null) {
       return (
         <a href={"#/conversations/" + this.props.conversationId}>

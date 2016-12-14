@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -7,13 +8,14 @@ class QuestionForm extends React.Component {
     this.state = {
       answerId: null,
       acceptableAnswers: [],
-      importance: 0.5,
+      importance: 0,
       explanation: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSkip = this.handleSkip.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
+    this.questionStack = this.questionStack.bind(this);
+    this.answeredQuestions = this.answeredQuestions.bind(this);
     this.handleAcceptable = this.handleAcceptable.bind(this);
     this.handleImportance = this.handleImportance.bind(this);
     this.handleExplanation = this.handleExplanation.bind(this);
@@ -26,6 +28,10 @@ class QuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    if (this.state.importance === 0) {
+      this.setState({ importance: 10 });
+    }
+
     const newResponse = {
       answer_id: this.state.answerId,
       user_id: this.props.currentUser.id,
@@ -34,21 +40,16 @@ class QuestionForm extends React.Component {
       explanation: this.state.explanation
     };
 
+
     this.props.createResponse(newResponse)
       .then(
         this.setState({
           answerId: null,
           acceptableAnswers: [],
-          importance: null,
+          importance: 0,
           explanation: ""
         })
       );
-  }
-
-  handleSkip(e) {
-    e.preventDefault();
-
-
   }
 
   handleAnswer(e) {
@@ -76,8 +77,32 @@ class QuestionForm extends React.Component {
     this.setState({ explanation: e.currentTarget.value });
   }
 
+  questionStack() {
+    if (this.props.questions) {
+      const unanswered = Object.keys(this.props.questions).map((question) => {
+        if (this.answeredQuestions().includes(parseInt(question))) {
+          return;
+        } else {
+          return this.props.questions[question];
+        }
+      }).filter((val) => val !== undefined);
+
+      return unanswered;
+    } else {
+      return {};
+    }
+  }
+
+  answeredQuestions() {
+    return (
+      Object.keys(this.props.responses).map((response) => {
+        return this.props.responses[response].question.id;
+      })
+    );
+  }
+
   renderAnswers() {
-    const answers = this.props.question.answers.map((answer) => {
+    const answers = this.questionStack()[0].answers.map((answer) => {
       return ([
           <label
             htmlFor={"radio-answer-" + answer.id}
@@ -103,7 +128,7 @@ class QuestionForm extends React.Component {
   }
 
   renderAcceptables() {
-    const acceptables = this.props.question.answers.map((answer) => {
+    const acceptables = this.questionStack()[0].answers.map((answer) => {
       return (
         <label className="acceptables-answer" key={ answer.id }>
           <input type="checkbox"
@@ -118,7 +143,7 @@ class QuestionForm extends React.Component {
     return (
       <div className="user-acceptables">
         <div className="acceptables-title">
-          <p>Answer(s) you'll accept</p>
+          <p>Answer(s) you won't accept</p>
         </div>
         {acceptables}
       </div>
@@ -126,6 +151,7 @@ class QuestionForm extends React.Component {
   }
 
   renderImportance() {
+    console.log(this.state);
     return(
       <div className="user-importance">
         <div className="importance-title">
@@ -136,8 +162,9 @@ class QuestionForm extends React.Component {
               <input
                 id="importance-answer-1"
                 name="importance-answer"
-                value={ 0.25 }
+                value={ 1 }
                 type="radio"
+                checked={ this.state.importance == 1 }
                 onClick={ this.handleImportance }
                 />
               <div className="importance-bar"></div>
@@ -147,8 +174,9 @@ class QuestionForm extends React.Component {
               <input
                 id="importance-answer-2"
                 name="importance-answer"
-                value={ 0.5 }
+                value={ 10 }
                 type="radio"
+                checked={ this.state.importance == 10 }
                 onClick={ this.handleImportance }
                 />
               <div className="importance-bar"></div>
@@ -158,8 +186,9 @@ class QuestionForm extends React.Component {
               <input
                 id="importance-answer-3"
                 name="importance-answer"
-                value={ 0.75 }
+                value={ 50 }
                 type="radio"
+                checked={ this.state.importance == 50 }
                 onClick={ this.handleImportance }
                 />
               <div className="importance-bar"></div>
@@ -176,6 +205,7 @@ class QuestionForm extends React.Component {
         <div className="explanation-input-container">
           <textarea
             className="explanation-textarea"
+            value={ this.state.explanation }
             onChange={ this.handleExplanation }
             placeholder="Explain your answer (optional)"
             />
@@ -185,25 +215,28 @@ class QuestionForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="new-question">
-        <div className="question-form">
-          <div className="question-title">
-            <p>{this.props.question.title}</p>
-          </div>
-          <div className="answers-container">
-            <form className="answers-form">
-              {this.renderAnswers()}
-              {this.renderAcceptables()}
-              {this.renderImportance()}
-              {this.renderExplanation()}
-              <input type="submit" value="Answer" className="answer-button" onClick={ this.handleSubmit }/>
-              <input type="submit" value="Skip" className="skip-button" onClick={ this.handleSkip }/>
-            </form>
+    if (this.props.questions) {
+      return (
+        <div className="new-question">
+          <div className="question-form">
+            <div className="question-title">
+              <p>{this.questionStack()[0].title}</p>
+            </div>
+            <div className="answers-container">
+              <form className="answers-form">
+                {this.renderAnswers()}
+                {this.renderAcceptables()}
+                {this.renderImportance()}
+                {this.renderExplanation()}
+                <input type="submit" value="Answer" className="answer-button" onClick={ this.handleSubmit }/>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div></div>;
+    }
   }
 
 }

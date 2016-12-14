@@ -5,10 +5,11 @@ export const fetchSingleResponse = (response_id) => {
   });
 };
 
-export const fetchResponses = () => {
+export const fetchResponses = (user_id) => {
   return $.ajax({
     method: "GET",
-    url: "api/responses"
+    url: "api/responses",
+    data: { response: {user_id} }
   });
 };
 

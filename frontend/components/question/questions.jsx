@@ -9,29 +9,20 @@ class Questions extends React.Component {
 
     };
 
-    this.questionStack = this.questionStack.bind(this);
     this.answeredQuestions = this.answeredQuestions.bind(this);
     this.answeredQuestionRender = this.answeredQuestionRender.bind(this);
     this.responseIdArray = this.responseIdArray.bind(this);
+    this.responseAcceptableArray = this.responseAcceptableArray.bind(this);
+    this.questionFormRender = this.questionFormRender.bind(this);
   }
 
   answeredQuestions() {
-    return (
-      Object.keys(this.props.responses).map((response) => {
-        return this.props.responses[response].question;
-      })
-    );
-  }
-
-  questionStack() {
-    if (this.props.questions) {
+    if (this.props.responses) {
       return (
-        Object.keys(this.props.questions).map((question) => {
-          return this.props.questions[question];
+        Object.keys(this.props.responses).map((response) => {
+          return this.props.responses[response].question;
         })
       );
-    } else {
-      return {};
     }
   }
 
@@ -43,13 +34,25 @@ class Questions extends React.Component {
     );
   }
 
+  responseAcceptableArray(question_id) {
+    let acceptables = null;
+    Object.keys(this.props.responses).forEach((response) => {
+      if (this.props.responses[response].question.id === question_id) {
+        acceptables =  this.props.responses[response].acceptable_answers;
+      }
+    });
+
+    return acceptables;
+  }
+
   answeredQuestionRender() {
     const answeredQuestions = this.answeredQuestions().map((question) => {
       const questionAnswers = this.props.questions[question.id].answers;
 
       const answerDisplay = questionAnswers.map((answer) => {
-        debugger
         if (this.responseIdArray().includes(answer.id)) {
+          return <p key={answer.id} className="question-answer match-response">{answer.body + "  ✓"}</p>;
+        } else if (this.responseAcceptableArray(question.id).includes(answer.body)) {
           return <p key={answer.id} className="question-answer match-response">{answer.body}</p>;
         } else {
           return <p key={answer.id} className="question-answer crossed">{answer.body}</p>;
@@ -74,21 +77,31 @@ class Questions extends React.Component {
     );
   }
 
+  questionFormRender() {
+    if (this.props.profile.id === this.props.currentUser.id) {
+      return <QuestionFormContainer questions={ this.props.questions } />;
+    } else {
+      return <div></div>;
+    }
+  }
+
   render() {
-    return (
-      <div className="content-questions">
-        <div className="content-container">
+    if (this.props.questions) {
+      return (
+        <div className="content-questions group">
           <div className="main-questions">
             <h2 className="questions-header">Match Questions</h2>
-            <QuestionFormContainer question={ this.questionStack()[3] } />
+            {this.questionFormRender()}
             <h2 className="show-questions-header">Show Questions</h2>
             <div className="answered-questions">
               {this.answeredQuestionRender()}
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 

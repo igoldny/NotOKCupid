@@ -6,6 +6,7 @@ import ConversationReducer from './conversation_reducer';
 import LikeReducer from './like_reducer';
 import QuestionReducer from './question_reducer';
 import ResponseReducer from './response_reducer';
+import UserReducer from './user_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   likes: LikeReducer,
   questions: QuestionReducer,
   responses: ResponseReducer,
+  users: UserReducer,
 });
 
 export default rootReducer;

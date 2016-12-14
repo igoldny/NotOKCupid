@@ -2,12 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {
-    fetchSingleConversation,
-    fetchConversations,
-    createConversation,
-    createMessage
-  } from './actions/conversation_actions';
+import { fetchUsers } from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -24,7 +19,4 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={ store } />, root);
 });
 
-window.fetchSingleConversation = fetchSingleConversation;
-window.fetchConversations = fetchConversations;
-window.createConversation = createConversation;
-window.createMessage = createMessage;
+window.fetchUsers = fetchUsers;

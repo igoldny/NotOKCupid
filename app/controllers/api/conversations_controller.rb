@@ -2,7 +2,11 @@ class Api::ConversationsController < ApplicationController
 
   def index
     @conversations =
-      Conversation.where("user_one_id = ? OR user_two_id = ?", current_user.id, current_user.id)
+      Conversation
+        .includes(:messages)
+        .includes(:started_user)
+        .includes(:received_user)
+        .where("user_one_id = ? OR user_two_id = ?", current_user.id, current_user.id)
     render :index
   end
 
@@ -18,7 +22,7 @@ class Api::ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.includes(:messages).find(params[:id])
     @messages = @conversation.messages.order(created_at: :asc)
     render :show
   end

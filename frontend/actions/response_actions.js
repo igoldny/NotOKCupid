@@ -10,9 +10,9 @@ export const fetchSingleResponse = (response_id) => {
   };
 };
 
-export const fetchResponses = () => {
+export const fetchResponses = (user_id) => {
   return (dispatch) => {
-    return APIUtil.fetchResponses()
+    return APIUtil.fetchResponses(user_id)
       .then((responses) => dispatch(receiveResponses(responses)));
   };
 };
@@ -20,7 +20,7 @@ export const fetchResponses = () => {
 export const createResponse = (response) => {
   return (dispatch) => {
     return APIUtil.postResponse(response)
-      .then((response) => dispatch(receiveSingleResponse(response)));
+      .then((responses) => dispatch(receiveResponses(responses)));
   };
 };
 

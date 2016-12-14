@@ -8,6 +8,7 @@ import ProfileContainer from './profile/profile_container';
 import GreetingContainer from './greeting/greeting_container';
 import ConversationsContainer from './conversation/conversations_container';
 import ChatContainer from './conversation/chat_container';
+import MatchContainer from './browse/matches_container';
 
 const Root = ({store}) => {
 
@@ -33,7 +34,7 @@ const Root = ({store}) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ Home } onEnter={ _redirectIfNotLoggedIn }/>
+          <IndexRoute component={ MatchContainer } onEnter={ _redirectIfNotLoggedIn }/>
           <Route path="/profile/:userId" component={ ProfileContainer } onEnter={ _redirectIfNotLoggedIn } />
           <Route path="/signup" component={ RegPageContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path="/conversations" component={ ConversationsContainer } onEnter={ _redirectIfNotLoggedIn } />

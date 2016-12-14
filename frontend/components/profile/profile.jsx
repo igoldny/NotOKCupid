@@ -25,12 +25,12 @@ class Profile extends React.Component {
   componentDidMount() {
     this.props.fetchCurrentProfile(this.props.params.userId)
       .then(() => {
+        this.props.fetchResponses(this.props.profile.id);
         this.setState({ imageUrl: this.props.profile.image_url });
       });
     this.props.fetchConversations();
     this.props.fetchLikes(this.props.currentUser.id);
     this.props.fetchQuestions();
-    this.props.fetchResponses();
   }
 
   componentWillReceiveProps(nextProps) {

@@ -1,15 +1,12 @@
 .content-questions {
+  position: relative;
   padding-top: 30px;
-  min-height: 800px;
+  min-height: 100%;
   width: 1000px;
   padding-left: 60px;
   padding-right: 60px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.content-container {
-  position: relative;
 }
 
 .main-questions {
@@ -28,9 +25,10 @@
 
 }
 
-.match-response {
-  color: #00d280;
+.change-question-leave.change-question-leave-active {
+
 }
+
 .question-answer {
   font-size: 15px;
   color: #474d59;
@@ -280,4 +278,12 @@ input[type="checkbox"] {
 
 .skip-button:hover {
   color: #4c7bd9;
+}
+
+.match-response {
+  color: #00d280;
+}
+
+.crossed {
+  text-decoration: line-through;
 }

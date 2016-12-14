@@ -12,7 +12,11 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User
+      .includes(:messages)
+      .includes(:responses)
+      .includes(:questions)
+      .find(params[:id])
 
     if @user
       render :profile
@@ -28,6 +32,19 @@ class Api::UsersController < ApplicationController
       render :profile
     else
       render json: @user.errors, status: 422
+    end
+  end
+
+  def index
+    @users = User
+      .includes(:responses)
+      .includes(:questions)
+      .where("username != ?", current_user.username)
+
+    if @users
+      render :index
+    else
+      render json: @users.errors, status: 422
     end
   end
 

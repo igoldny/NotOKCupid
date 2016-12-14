@@ -73,7 +73,6 @@
   height: 262px;
   width: 500px;
   margin: 20px 10px 0 0;
-  background: #fff;
 }
 
 .inside-text {
@@ -82,6 +81,11 @@
   padding: 20px;
   width: 458px;
   height: 158px;
+  background: #fff;
+}
+
+.inside-text:focus {
+  border: 1px solid #9dbaf2;
 }
 
 .save-button {

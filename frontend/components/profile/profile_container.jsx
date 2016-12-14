@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
   destroyLike: (like_id) => dispatch(destroyLike(like_id)),
   updateImage: (formData, user) => dispatch(updateImage(formData, user)),
   fetchQuestions: () => dispatch(fetchQuestions()),
-  fetchResponses: () => dispatch(fetchResponses())
+  fetchResponses: (user_id) => dispatch(fetchResponses(user_id))
 });
 
 export default connect(

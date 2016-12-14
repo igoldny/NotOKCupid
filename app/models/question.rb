@@ -14,11 +14,9 @@ class Question < ActiveRecord::Base
 
   has_many :answers
 
-  has_many :responses
-
-  has_many :users, {
-    through: :responses,
-    source: :user
+  has_many :responses, {
+    through: :answers,
+    source: :responses
   }
 
 end
