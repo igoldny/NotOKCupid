@@ -195,15 +195,21 @@
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.profile-tabs-container {
+  border-bottom: 1px solid rgba(157,186,242,0.25);
+  margin: 0 20px;
+}
+
 .profile-tabs {
-  padding-left: 200px;
+  width: 1000px;
+  padding-left: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabs {
   color: #474d59;
   font-weight: bold;
-  border-bottom: 1px solid rgba(157,186,242,0.25);
-  margin: 0 auto;
 }
 
 .tabs > li {

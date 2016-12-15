@@ -21,6 +21,7 @@ class Message < ActiveRecord::Base
   }
 
   belongs_to :conversation, {
+    touch: true,
     class_name: :Conversation,
     primary_key: :id,
     foreign_key: :thread_id

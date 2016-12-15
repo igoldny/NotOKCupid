@@ -1,5 +1,6 @@
 import React from 'react';
 import MatchItem from './match_item';
+import Spinner from './spinner';
 import { withRouter } from 'react-router';
 
 class Matches extends React.Component {
@@ -7,7 +8,10 @@ class Matches extends React.Component {
     super(props);
 
     this.state = {
-      sortBy: "match percentage"
+      distance: 100000,
+      sortBy: "match percentage",
+      minAge: 0,
+      maxAge: 0
     };
 
     this.findMatchPercentage = this.findMatchPercentage.bind(this);
@@ -17,16 +21,68 @@ class Matches extends React.Component {
     this.handleSort = this.handleSort.bind(this);
     this.sortedUsers = this.sortedUsers.bind(this);
     this.sortOptions = this.sortOptions.bind(this);
+    this.distanceOptions = this.distanceOptions.bind(this);
+    this.handleDistance = this.handleDistance.bind(this);
+    this.preferences = this.preferences.bind(this);
+    this.minAge = this.minAge.bind(this);
+    this.maxAge = this.maxAge.bind(this);
+    this.usernameSort = this.usernameSort.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUsers();
+    this.props.fetchUsers(this.state.distance);
     this.props.fetchLikes(this.props.currentUser.id);
     this.props.fetchQuestions();
+    this.setState({ minAge: this.minAge(), maxAge: this.maxAge() });
   }
 
+  minAge() {
+    if (this.props.currentUser.age - 7 < 18) {
+      return 18;
+    } else {
+      return this.props.currentUser.age - 7;
+    }
+  }
+
+  maxAge(user) {
+    if (this.props.currentUser.age + 7 > 150) {
+      return 150;
+    } else {
+      return this.props.currentUser.age + 7;
+    }
+  }
+
+  preferences() {
+    let gender;
+
+    if (this.props.currentUser.sexuality === "straight" && this.props.currentUser.gender === "man") {
+      gender = "women";
+    } else if (this.props.currentUser.sexuality === "straight") {
+      gender = "men";
+    } else if (this.props.currentUser.sexuality === "gay" && this.props.currentUser.gender === "woman") {
+      gender = "men";
+    } else if (this.props.currentUser.sexuality === "gay") {
+      gender = "women";
+    } else {
+      gender = "both men and woman";
+    }
+
+    return (
+      <div className="preferences-bar">
+        <p className="browse-large">Looking for {gender} between the ages of {this.state.minAge} and {this.state.maxAge} that are your complete opposites</p>
+      </div>
+    );
+    // <p className="browse-smaller">You might just find love where you least expect it</p>
+    // <p className="browse-smallest">But probably not on this website</p>
+
+  }
   handleSort(e) {
     this.setState({ sortBy: e.currentTarget.value });
+  }
+
+  handleDistance(e) {
+    this.props.fetchUsers(parseInt(e.currentTarget.value));
+    this.setState({ distance: parseInt(e.currentTarget.value) });
   }
 
   findMatchPercentage(user) {
@@ -65,8 +121,12 @@ class Matches extends React.Component {
 
     const multiplied = currentUserPercent * otherUserPercent;
     const root = commonQuestions.length;
+    let matchPercent = Math.floor((Math.sqrt(multiplied) - (1 / root)) * 100);
 
-    return Math.floor(Math.sqrt(multiplied) * 100);
+    if (matchPercent < 0) {
+      matchPercent = 0;
+    }
+    return matchPercent;
   }
 
   calculateQuestionImportance(question, user) {
@@ -112,6 +172,16 @@ class Matches extends React.Component {
 
   }
 
+  usernameSort(a, b) {
+    if (this.props.users[a.user].username < this.props.users[b.user].username) {
+      return -1;
+    } else if (this.props.users[a.user].username > this.props.users[b.user].username) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
   sortedUsers() {
     return Object.keys(this.props.users).map((user) => {
       let userLike = {};
@@ -131,9 +201,17 @@ class Matches extends React.Component {
       };
 
     }).sort((a, b) => {
-      return this.state.sortBy === "match percentage" ?
-        b.matchPercentage - a.matchPercentage : a.matchPercentage - b.matchPercentage;
-    });
+      if (this.state.sortBy === "match percentage") {
+        return b.matchPercentage - a.matchPercentage;
+      } else if (this.state.sortBy === "username") {
+        return this.usernameSort(a, b);
+      } else {
+        return this.props.users[a.user].age - this.props.users[b.user].age;
+      }
+    }).filter((user) =>
+      this.props.users[user.user].age > this.state.minAge &&
+      this.props.users[user.user].age < this.state.maxAge
+    );
   }
 
   matchListItems() {
@@ -158,27 +236,52 @@ class Matches extends React.Component {
     return (
       <select className="sort-dropdown" onChange={ this.handleSort }>
         <option value="match percentage">Match Percentage</option>
-        <option value="distance">Distance</option>
+        <option value="username">Username</option>
+        <option value="age">Age</option>
       </select>
     );
   }
 
+  distanceOptions() {
+    return (
+      <select className="sort-dropdown" onChange={ this.handleDistance }>
+        <option value="100000">Any</option>
+        <option value="2">2</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    );
+  }
 
   render(){
-    return (
-      <div className="browse-main">
-        <div className="sort-box">
-          <div>Sort by
-            {this.sortOptions()}
+    if (!this.props.currentUser) {
+      return null;
+    }
+    
+    if (this.matchListItems()) {
+      return (
+        <div className="browse-main">
+          {this.preferences()}
+          <div className="sort-box group">
+            <div className="sort-text-container">Sort by:
+              {this.sortOptions()}
+            </div>
+            <div className="distance-container">Distance:
+              {this.distanceOptions()}
+            </div>
+          </div>
+          <div className="match-container">
+            <ul className="group">
+              {this.matchListItems()}
+            </ul>
           </div>
         </div>
-        <div className="match-container">
-          <ul className="group">
-            {this.matchListItems()}
-          </ul>
-        </div>
-      </div>
-    );
+      );
+    } else {
+      return <Spinner />;
+    }
   }
 }
 

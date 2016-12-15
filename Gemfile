@@ -34,6 +34,8 @@ gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'faker'
+gem 'geocoder'
+gem 'geokit-rails'
 
 group :production do
   gem 'rails_12factor'

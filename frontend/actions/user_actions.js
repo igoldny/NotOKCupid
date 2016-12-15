@@ -2,9 +2,9 @@ import * as APIUtil from '../util/user_api_util';
 
 export const RECEIVE_USERS = "RECEIVE_USERS";
 
-export const fetchUsers = () => {
+export const fetchUsers = (distance) => {
   return (dispatch) => {
-    return APIUtil.fetchUsers()
+    return APIUtil.fetchUsers(distance)
       .then((users) => dispatch(receiveUsers(users)));
   };
 };

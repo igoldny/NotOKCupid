@@ -36,7 +36,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @users = User
+    @users = current_user.find_users_within(params[:distance])
       .includes(:responses)
       .includes(:questions)
       .where("username != ?", current_user.username)

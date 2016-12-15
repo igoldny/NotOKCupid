@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUsers: () => dispatch(fetchUsers()),
+  fetchUsers: (distance) => dispatch(fetchUsers(distance)),
   fetchLikes: (from_id) => dispatch(fetchLikes(from_id)),
   fetchQuestions: () => dispatch(fetchQuestions()),
   createLike: (like) => dispatch(createLike(like)),

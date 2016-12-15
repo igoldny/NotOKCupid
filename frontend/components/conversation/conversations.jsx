@@ -16,8 +16,9 @@ class Conversations extends React.Component {
   }
 
   receivedList() {
+    const order = this.props.conversations.order || [];
     return(
-      Object.keys(this.props.conversations).map((conversation) => {
+      order.map((conversation) => {
         if (this.props.conversations[conversation].received_user.id === this.props.currentUser.id) {
           return (
             <ConversationBox
@@ -34,8 +35,9 @@ class Conversations extends React.Component {
   }
 
   sentList() {
+    const order = this.props.conversations.order || [];
     return(
-      Object.keys(this.props.conversations).map((conversation) => {
+      order.map((conversation) => {
         if (this.props.conversations[conversation].started_user.id === this.props.currentUser.id) {
           return (
             <ConversationBox
@@ -52,22 +54,26 @@ class Conversations extends React.Component {
   }
 
   render() {
+    if  (!this.props.currentUser) {
+      return null;
+    }
+
     if (!this.props.conversations) {
       return <div></div>;
-    } else {
-      return(
-        <div className="main-messages">
-          <div className="message-heading">
-            <h1 className="messages-title">Messages</h1>
-          </div>
-          <TabsContainer
-            tabs={ [ this.receivedList(), this.sentList() ] }
-            tabNames={ ["Received", "Sent"] }
-            styling="messages-tabs"
-            />
-        </div>
-      );
     }
+
+    return(
+      <div className="main-messages">
+        <div className="message-heading">
+          <h1 className="messages-title">Messages</h1>
+        </div>
+        <TabsContainer
+          tabs={ [ this.receivedList(), this.sentList() ] }
+          tabNames={ ["Received", "Sent"] }
+          styling="messages-tabs"
+          />
+      </div>
+    );
   }
 }
 

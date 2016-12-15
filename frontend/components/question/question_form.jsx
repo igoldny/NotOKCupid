@@ -23,6 +23,7 @@ class QuestionForm extends React.Component {
     this.renderAcceptables = this.renderAcceptables.bind(this);
     this.renderImportance = this.renderImportance.bind(this);
     this.renderExplanation = this.renderExplanation.bind(this);
+    this.renderForm = this.renderForm.bind(this);
   }
 
   handleSubmit(e) {
@@ -104,19 +105,19 @@ class QuestionForm extends React.Component {
   renderAnswers() {
     const answers = this.questionStack()[0].answers.map((answer) => {
       return ([
-          <label
-            htmlFor={"radio-answer-" + answer.id}
-            key={answer.id}
-            className="radio-answer" >
-              <input
-                id={"radio-answer-" + answer.id}
-                value={ answer.id }
-                name="my-answer"
-                type="radio"
-                onClick={ this.handleAnswer }
-                />
-              {answer.body}
-          </label>
+        <label
+          htmlFor={"radio-answer-" + answer.id}
+          key={answer.id}
+          className="radio-answer" >
+          <input
+            id={"radio-answer-" + answer.id}
+            value={ answer.id }
+            name="my-answer"
+            type="radio"
+            onClick={ this.handleAnswer }
+            />
+          {answer.body}
+        </label>
       ]);
     });
 
@@ -151,7 +152,6 @@ class QuestionForm extends React.Component {
   }
 
   renderImportance() {
-    console.log(this.state);
     return(
       <div className="user-importance">
         <div className="importance-title">
@@ -214,24 +214,34 @@ class QuestionForm extends React.Component {
     );
   }
 
+  renderForm() {
+    if (this.questionStack().length > 0) {
+      return (
+        <div className="question-form">
+          <div className="question-title">
+            <p>{this.questionStack()[0].title}</p>
+          </div>
+          <div className="answers-container">
+            <form className="answers-form">
+              {this.renderAnswers()}
+              {this.renderAcceptables()}
+              {this.renderImportance()}
+              {this.renderExplanation()}
+              <input type="submit" value="Answer" className="answer-button" onClick={ this.handleSubmit }/>
+            </form>
+          </div>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
+
   render() {
     if (this.props.questions) {
       return (
         <div className="new-question">
-          <div className="question-form">
-            <div className="question-title">
-              <p>{this.questionStack()[0].title}</p>
-            </div>
-            <div className="answers-container">
-              <form className="answers-form">
-                {this.renderAnswers()}
-                {this.renderAcceptables()}
-                {this.renderImportance()}
-                {this.renderExplanation()}
-                <input type="submit" value="Answer" className="answer-button" onClick={ this.handleSubmit }/>
-              </form>
-            </div>
-          </div>
+          {this.renderForm()}
         </div>
       );
     } else {

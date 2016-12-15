@@ -25,6 +25,8 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  latitude           :float
+#  longitude          :float
 #
 
 class User < ActiveRecord::Base
@@ -37,7 +39,16 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  geocoded_by :location
   after_initialize :ensure_session_token
+  after_validation :geocode, if: -> (obj) {
+    obj.location.present? and obj.location_changed?
+  }
+
+  acts_as_mappable default_units: :miles,
+                   distance_field_name: :distance,
+                   lat_column_name: :latitude,
+                   lng_column_name: :longitude
 
   has_attached_file :image, default_url: "default_prof_pic.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -93,6 +104,10 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom::urlsafe_base64(16)
     self.save!
     self.session_token
+  end
+
+  def find_users_within(miles)
+    User.within(miles, origin: self)
   end
 
   private

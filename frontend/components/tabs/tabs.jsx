@@ -42,9 +42,11 @@ class Tabs extends React.Component {
   render() {
     return (
       <div>
-        <ul className={this.props.styling + " tabs group"}>
-          {this.tabArray()}
-        </ul>
+        <div className="profile-tabs-container">
+          <ul className={this.props.styling + " tabs group"}>
+            {this.tabArray()}
+          </ul>
+        </div>
         <div>{this.props.tabs[this.state.selectedIndex]}</div>
       </div>
     );

@@ -7,6 +7,7 @@ class Api::ConversationsController < ApplicationController
         .includes(:started_user)
         .includes(:received_user)
         .where("user_one_id = ? OR user_two_id = ?", current_user.id, current_user.id)
+        .order(updated_at: :desc)
     render :index
   end
 
