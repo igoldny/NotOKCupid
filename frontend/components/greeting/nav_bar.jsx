@@ -28,9 +28,6 @@ class NavBar extends React.Component {
               <li className="nav-left-link">
                 <a href="/">Browse Matches</a>
               </li>
-              <li className="nav-left-link">
-                <a href="/">Quickmatch</a>
-              </li>
             </ul>
           </div>
           <div>

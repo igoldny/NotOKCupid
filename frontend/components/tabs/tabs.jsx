@@ -7,7 +7,6 @@ class Tabs extends React.Component {
 
     this.state = {
       selectedIndex: 0,
-      selectedContent: this.props.tabs[0],
     };
 
     this.tabArray = this.tabArray.bind(this);
@@ -15,7 +14,7 @@ class Tabs extends React.Component {
   }
 
   handleClick(idx) {
-    this.setState({ selectedIndex: idx, selectedContent: this.props.tabs[idx] });
+    this.setState({ selectedIndex: idx });
   }
 
   tabArray() {
@@ -46,7 +45,7 @@ class Tabs extends React.Component {
         <ul className={this.props.styling + " tabs group"}>
           {this.tabArray()}
         </ul>
-        <div>{this.state.selectedContent}</div>
+        <div>{this.props.tabs[this.state.selectedIndex]}</div>
       </div>
     );
   }

@@ -22,7 +22,7 @@ class RegPage extends React.Component {
 
     this.props.login({ username: "getBernt", password: "bernie"})
       .then((user) => {
-        this.props.router.push(`/profile/${user.currentUser.id}`);
+        this.props.router.push('/');
       });
   }
 

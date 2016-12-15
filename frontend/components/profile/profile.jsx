@@ -36,6 +36,7 @@ class Profile extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.params.userId !== nextProps.params.userId) {
       this.props.fetchCurrentProfile(nextProps.params.userId);
+      this.setState({ imageUrl: nextProps.profile.image_url });
     }
   }
 
@@ -167,7 +168,7 @@ class Profile extends React.Component {
                     {this.props.profile.username}
                   </h2>
                   <h3 className="user-details">
-                    {this.props.profile.age} • {this.props.profile.location} •
+                    {this.props.profile.age} • {this.props.profile.location}
                   </h3>
                 </div>
               </div>

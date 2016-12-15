@@ -22,7 +22,7 @@ class LogInModal extends React.Component {
       .then((user) => {
         this.setState({ username: "", password: "" });
         this.props.setModal(false);
-        this.props.router.push(`/profile/${user.currentUser.id}`);
+        this.props.router.push('/');
       });
   }
 

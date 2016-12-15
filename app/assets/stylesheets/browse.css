@@ -1,0 +1,101 @@
+.match-container {
+  width: 900px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.match-item-wrapper {
+  float: left;
+  position: relative;
+  width: 280px;
+  height: 385px;
+  margin: 0 10px 40px 10px;
+}
+
+.match-item {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 385px;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.browse-pic {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  object-fit: cover;
+  transition: height 0.5s ease;
+  height: 225px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.browse-pic:hover {
+  transition: height 0.5s ease;
+  height: 235px;
+  cursor: pointer;
+}
+
+.match-text {
+  position: relative;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.username-text {
+  color: #474d59;
+  font-size: 22px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.user-browse-info {
+  font-size: 15px;
+  color: #949aa6;
+  margin-bottom: 5px;
+}
+
+.match-percentage {
+  font-size: 20px;
+  color: #474d59;
+}
+
+.browse-like-button {
+  border: 1px solid rgba(157,186,242,0.25);
+  border-radius: 5px;
+  margin-top: 5px;
+  height: 40px;
+  width: 130px;
+  text-align: center;
+}
+
+.browse-like-button:hover {
+  border: 1px solid #ccd0d9;
+  color: #5e6573;
+  background: rgba(174,180,191,0.1);
+}
+
+.browse-liked {
+  background: #efc417;
+  color: #fff;
+}
+
+.green {
+  color: #13de39;
+}
+
+.orange {
+  color: #ffc107;
+}
+
+.red {
+  color: #f44336;
+}

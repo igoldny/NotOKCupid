@@ -9,12 +9,13 @@ import GreetingContainer from './greeting/greeting_container';
 import ConversationsContainer from './conversation/conversations_container';
 import ChatContainer from './conversation/chat_container';
 import MatchContainer from './browse/matches_container';
+import Browse from './browse/browse';
 
 const Root = ({store}) => {
 
   function _redirectIfLoggedIn(nextState, replace) {
     if (store.getState().session.currentUser) {
-      replace("/browse")
+      replace("/")
     }
   }
 

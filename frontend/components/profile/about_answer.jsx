@@ -5,7 +5,7 @@ class AboutAnswer extends React.Component {
     super(props);
 
     this.state = {
-      answerText: this.props.answerText,
+      answerText: "",
       previousText: "",
       edit: false
     };
@@ -19,6 +19,14 @@ class AboutAnswer extends React.Component {
     this.userEditText = this.userEditText.bind(this);
     this.normalText = this.normalText.bind(this);
     this.currentText = this.currentText.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ answerText: this.props.answerText });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ answerText: nextProps.answerText });
   }
 
   handleClick(e) {

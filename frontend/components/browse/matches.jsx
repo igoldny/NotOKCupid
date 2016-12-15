@@ -1,20 +1,32 @@
 import React from 'react';
 import MatchItem from './match_item';
+import { withRouter } from 'react-router';
 
 class Matches extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      sortBy: "match percentage"
+    };
+
     this.findMatchPercentage = this.findMatchPercentage.bind(this);
     this.calculateQuestionImportance = this.calculateQuestionImportance.bind(this);
     this.calculateQuestionScore = this.calculateQuestionScore.bind(this);
     this.matchListItems = this.matchListItems.bind(this);
+    this.handleSort = this.handleSort.bind(this);
+    this.sortedUsers = this.sortedUsers.bind(this);
+    this.sortOptions = this.sortOptions.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUsers();
     this.props.fetchLikes(this.props.currentUser.id);
     this.props.fetchQuestions();
+  }
+
+  handleSort(e) {
+    this.setState({ sortBy: e.currentTarget.value });
   }
 
   findMatchPercentage(user) {
@@ -47,14 +59,14 @@ class Matches extends React.Component {
       otherUserPoints += this.calculateQuestionScore(question, user, this.props.currentUser);
       otherUserQuestionTotal += this.calculateQuestionImportance(question, user);
     });
-    
+
     const currentUserPercent = (currentUserPoints / currentUserQuestionTotal);
     const otherUserPercent = (otherUserPoints / otherUserQuestionTotal);
 
     const multiplied = currentUserPercent * otherUserPercent;
     const root = commonQuestions.length;
 
-    return Math.pow(multiplied, (1/root)) * 100;
+    return Math.floor(Math.sqrt(multiplied) * 100);
   }
 
   calculateQuestionImportance(question, user) {
@@ -100,39 +112,74 @@ class Matches extends React.Component {
 
   }
 
-  matchListItems() {
-    const matches = Object.keys(this.props.users).map((user) => {
-      let likeStatus = false;
+  sortedUsers() {
+    return Object.keys(this.props.users).map((user) => {
+      let userLike = {};
 
       Object.keys(this.props.likes).forEach((like) => {
         if (this.props.likes[like].to_id === this.props.users[user].id) {
-          likeStatus = true;
+          userLike = { id: like };
         }
       });
 
       const matchPercentage = this.findMatchPercentage(this.props.users[user]);
 
+      return {
+        matchPercentage,
+        userLike,
+        user
+      };
+
+    }).sort((a, b) => {
+      return this.state.sortBy === "match percentage" ?
+        b.matchPercentage - a.matchPercentage : a.matchPercentage - b.matchPercentage;
+    });
+  }
+
+  matchListItems() {
+    const matches = this.sortedUsers().map((user) => {
       return (
-        <li key={ user }>
+        <li key={ user.user }>
           <MatchItem
-            matchPercentage={ matchPercentage }
-            user={ this.props.users[user] }
-            likeStatus={ likeStatus }
+            matchPercentage={ user.matchPercentage }
+            currentUser={ this.props.currentUser }
+            user={ this.props.users[user.user] }
+            like={ user.userLike }
+            createLike={ this.props.createLike }
+            destroyLike={ this.props.destroyLike }
             />
         </li>
       );
     });
-
     return matches;
   }
 
+  sortOptions() {
+    return (
+      <select className="sort-dropdown" onChange={ this.handleSort }>
+        <option value="match percentage">Match Percentage</option>
+        <option value="distance">Distance</option>
+      </select>
+    );
+  }
+
+
   render(){
     return (
-      <ul>
-        {this.matchListItems()}
-      </ul>
+      <div className="browse-main">
+        <div className="sort-box">
+          <div>Sort by
+            {this.sortOptions()}
+          </div>
+        </div>
+        <div className="match-container">
+          <ul className="group">
+            {this.matchListItems()}
+          </ul>
+        </div>
+      </div>
     );
   }
 }
 
-export default Matches;
+export default withRouter(Matches);

@@ -2,6 +2,7 @@
   json.set! user.id do
     json.questions user.questions
     json.responses user.responses
+    json.id user.id
     json.username user.username
     json.gender user.gender
     json.sexuality user.sexuality

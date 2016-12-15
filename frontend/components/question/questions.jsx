@@ -14,6 +14,7 @@ class Questions extends React.Component {
     this.responseIdArray = this.responseIdArray.bind(this);
     this.responseAcceptableArray = this.responseAcceptableArray.bind(this);
     this.questionFormRender = this.questionFormRender.bind(this);
+    this.questionFormHeader = this.questionFormHeader.bind(this);
   }
 
   answeredQuestions() {
@@ -77,6 +78,14 @@ class Questions extends React.Component {
     );
   }
 
+  questionFormHeader() {
+    if (this.props.profile.id === this.props.currentUser.id) {
+      return <h2 className="questions-header">Match Questions</h2>;
+    } else {
+      return <div></div>;
+    }
+  }
+
   questionFormRender() {
     if (this.props.profile.id === this.props.currentUser.id) {
       return <QuestionFormContainer questions={ this.props.questions } />;
@@ -90,7 +99,7 @@ class Questions extends React.Component {
       return (
         <div className="content-questions group">
           <div className="main-questions">
-            <h2 className="questions-header">Match Questions</h2>
+            {this.questionFormHeader()}
             {this.questionFormRender()}
             <h2 className="show-questions-header">Show Questions</h2>
             <div className="answered-questions">
