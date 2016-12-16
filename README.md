@@ -20,13 +20,13 @@ Users that navigate to NotOKCupid are prompted by an easy to follow log in/sign 
 
 ![Alt text](/app/assets/images/profile_page.png)
 
-From the profile page, users are able to add profile pictures and answer some basic questions about themselves, such as "What I plan to do with my life" or "I'm really great at..".  As displayed in the image above, users can edit this information by clicking the edit pencil next to the title.  Displayed below, is the questions section, where the user is able to answer questions about themselves to minimize the margin of error in the matching algorithm.  The more questions answered, the more accurate the outcome!
+From the profile page, users are able to add profile pictures and answer some basic questions about themselves, such as "What I plan to do with my life" or "I'm really great at..".  As displayed in the image above, users can edit this information by clicking the edit pencil next to the title.  Displayed below is the questions section, where the user is able to answer questions about themselves to minimize the margin of error in the matching algorithm.  The more questions answered, the more accurate the outcome!
 
 ### Questions Page
 
 ![Alt text](/app/assets/images/questions_page.png)
 
-Answer questions about yourself to find the perfect match! The algorithm is pretty simple, actually.  Questions get a point amount based on the importance of the question to the user, a little important, somewhat important, and very important, or 1 points, 10 points, and 50 points, respectively.  They are then asked which answers they will NOT accept from a partner.  The algorithm then finds users with common questions answered and tallies up their points based on whether or not the other user answered the NOT acceptable answer of the current user, giving a full score if that holds true and a zero if not.  This happens for both users. At the end, the two users multiply their individual percentages together and the geometric mean is calculated from these results.  Finally, you have a match percentage!
+Answer questions about yourself to find the perfect match! The algorithm is pretty simple, actually.  Questions get a point amount based on the importance of the question to the user: a little important, somewhat important, and very important, or 1 points, 10 points, and 50 points, respectively.  They are then asked which answers they will NOT accept from a partner.  The algorithm then finds users with common questions answered and tallies up their points based on whether or not the other user answered the NOT acceptable answer of the current user, tallying the full points for the user if that holds true and tallying a zero if not.  This happens for both users. At the end, the two users multiply their individual percentages together and the geometric mean is calculated from these results.  Finally, you have a match percentage!
 
 ### Messages Page
 
@@ -42,7 +42,7 @@ On the messages page, users can view all of their received and sent converations
 
 ![Alt text](/app/assets/images/browse_page.png)
 
-The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age.  Please disregard the pictures of young people in the screenshot, as they are just random seeds pulled from the internet!  Users must, in fact, be over 18 years old to sign up.
+The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age.  **Please disregard the pictures of young people in the screenshot, as they are just random seeds pulled from the internet!**  Users must, in fact, be over 18 years old to sign up.
 
 
 ## Future Directions for the Project
@@ -55,4 +55,4 @@ I would like to implement user searching to give users access to other users tha
 
 ###  Block or hide other users
 
-Users should be able to block/hide other users that they may not be interested in or have had a bad experience with.
+Users should be able to block/hide other users that they may be uninterested in or have had a bad experience with.

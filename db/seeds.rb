@@ -159,6 +159,8 @@ message_if: "You want to party, hard.",
 image: File.open("#{Rails.root}/app/assets/images/bernie_face.jpg")
 )
 
+count = 0
+
 Question.all.each do |question|
   answer_num = question.answers.length
   rand_answer = rand(answer_num)
@@ -171,14 +173,17 @@ Question.all.each do |question|
     acceptables << question.answers[num].body
   end
 
+  unless count < 17
+    Response.create(
+      answer_id: question.answers[rand_answer].id,
+      user_id: user1.id,
+      acceptable_answers: acceptables,
+      importance: importance_amounts[rand_importance],
+      explanation: Faker::Hipster.sentence
+    )
+  end
 
-  Response.create(
-    answer_id: question.answers[rand_answer].id,
-    user_id: user1.id,
-    acceptable_answers: acceptables,
-    importance: importance_amounts[rand_importance],
-    explanation: Faker::Hipster.sentence
-  )
+  count += 1
 end
 
 
