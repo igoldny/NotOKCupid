@@ -23,6 +23,7 @@ class Matches extends React.Component {
     this.sortOptions = this.sortOptions.bind(this);
     this.distanceOptions = this.distanceOptions.bind(this);
     this.handleDistance = this.handleDistance.bind(this);
+    this.sexualityPreference = this.sexualityPreference.bind(this);
     this.preferences = this.preferences.bind(this);
     this.minAge = this.minAge.bind(this);
     this.maxAge = this.maxAge.bind(this);
@@ -52,6 +53,43 @@ class Matches extends React.Component {
     }
   }
 
+  sexualityPreference(user) {
+    if (this.props.currentUser.sexuality === "straight" && this.props.currentUser.gender === "man") {
+      return (
+        this.props.users[user.user].gender === "woman" &&
+        this.props.users[user.user].sexuality !== "gay"
+      );
+    } else if (this.props.currentUser.sexuality === "straight") {
+      return (
+        this.props.users[user.user].gender === "man" &&
+        this.props.users[user.user].sexuality !== "gay"
+      );
+    } else if (this.props.currentUser.sexuality === "gay" && this.props.currentUser.gender === "man") {
+      return (
+        this.props.users[user.user].gender === "man" &&
+        this.props.users[user.user].gender !== "straight"
+      );
+    } else if (this.props.currentUser.sexuality === "gay") {
+      return (
+        this.props.users[user.user].gender === "woman" &&
+        this.props.users[user.user].sexuality !== "straight"
+      );
+    } else if (this.props.currentUser.sexuality === "bisexual" && this.props.currentUser.gender === "man"){
+      return (
+        (this.props.users[user.user].gender === "woman" && this.props.users[user.user].sexuality === "straight") ||
+        (this.props.users[user.user].gender === "man" && this.props.users[user.user].sexuality === "gay") ||
+        (this.props.users[user.user].sexuality === "bisexual")
+      );
+    } else {
+      return (
+        (this.props.users[user.user].gender === "woman" && this.props.users[user.user].sexuality === "gay") ||
+        (this.props.users[user.user].gender === "man" && this.props.users[user.user].sexuality === "straight") ||
+        (this.props.users[user.user].sexuality === "bisexual")
+      );
+    }
+  }
+
+
   preferences() {
     let gender;
 
@@ -72,8 +110,6 @@ class Matches extends React.Component {
         <p className="browse-large">Looking for {gender} between the ages of {this.state.minAge} and {this.state.maxAge} that are your complete opposites</p>
       </div>
     );
-    // <p className="browse-smaller">You might just find love where you least expect it</p>
-    // <p className="browse-smallest">But probably not on this website</p>
 
   }
   handleSort(e) {
@@ -210,9 +246,11 @@ class Matches extends React.Component {
       }
     }).filter((user) =>
       this.props.users[user.user].age > this.state.minAge &&
-      this.props.users[user.user].age < this.state.maxAge
+      this.props.users[user.user].age < this.state.maxAge &&
+      this.sexualityPreference(user)
     );
   }
+
 
   matchListItems() {
     const matches = this.sortedUsers().map((user) => {

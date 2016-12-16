@@ -137,6 +137,10 @@ a56 = Answer.create(question_id: q20.id, body: "Visual / Artistic", order: 3)
 
 # seed 100 users
 
+prof_pics = HTTParty.get('https://pixabay.com/api/?key=4030205-09edb77b80f0f13b40ea34bea&q=face&image_type=photo')
+
+urls = prof_pics["hits"].map { |pic| pic["webformatURL"] }
+
 user1 = User.create(
 username: "getBernt",
 password: "bernie",
@@ -144,7 +148,7 @@ sexuality: "straight",
 gender: "man",
 email: "bernie@bernie.com",
 age: 75,
-location: 10001,
+location: "10001",
 summary: "I speak for the people!!",
 doing: "Change the world",
 good_at: "Dating and debating ;)",
@@ -159,7 +163,7 @@ Question.all.each do |question|
   answer_num = question.answers.length
   rand_answer = rand(answer_num)
   acceptable_length = rand(1..answer_num)
-  importance_amounts = [1, 10, 50]
+  importance_amounts = [1, 10, 75]
   rand_importance = rand(3)
   acceptables = []
 
@@ -185,7 +189,7 @@ sexuality: "straight",
 gender: "man",
 email: "wpr124@gmail.com",
 age: 25,
-location: 10463,
+location: "10463",
 summary: "I like to code.",
 doing: "Hopefully becoming a software developer. Or I'll be homeless. Or both.",
 good_at: "Soccer and stuff.",
@@ -228,12 +232,12 @@ zips = ["10026", "10027", "10030", "10037", "10039",
 max_id = 0
 total = 0
 
-while total < 100 do
-
+while total < 200 do
+  user = nil;
 
   username = Faker::Internet.user_name
   password = "password"
-  gender = rand(2) == 1 ? "male" : "female"
+  gender = rand(2) == 1 ? "man" : "woman"
   sexuality = sexualities[rand(3)]
   email = Faker::Internet.email
   age = rand(18..150)
@@ -245,6 +249,7 @@ while total < 100 do
   thinking = Faker::Hipster.paragraph
   friday = Faker::Hipster.paragraph
   message_if = Faker::Hipster.paragraph
+
 
   user = User.create(
     username: username,
@@ -260,19 +265,20 @@ while total < 100 do
     favorites: favorites,
     thinking: thinking,
     friday: friday,
-    message_if: message_if
+    message_if: message_if,
+    image: open(urls.sample)
   )
 
 
-  if user
+  if user.id
     max_id = user.id if user.id > max_id
     total += 1
 
     Question.all.each do |question|
       answer_num = question.answers.length
       rand_answer = rand(answer_num)
-      acceptable_length = rand(1..answer_num)
-      importance_amounts = [1, 10, 50]
+      acceptable_length = rand(1..2)
+      importance_amounts = [1, 10, 75]
       rand_importance = rand(3)
       acceptables = []
 
@@ -294,6 +300,59 @@ while total < 100 do
 end
 
 # seed 100 unique conversations
+
+unique_conversations = []
+max_convo_id = 0
+
+while unique_conversations.length < 100 do
+
+  rand_user_one = rand((max_id-99)..max_id)
+  rand_user_two = rand((max_id-99)..max_id)
+
+  while rand_user_two == rand_user_one
+    rand_user_two = rand((max_id-99)..max_id)
+  end
+
+  if unique_conversations.length % 49 == 0
+    conversation_pair = [user1.id, rand_user_two]
+  elsif unique_conversations.length % 48 == 0
+    conversation_pair = [rand_user_one, user1.id]
+  else
+    conversation_pair = [rand_user_one, rand_user_two]
+  end
+
+  unless unique_conversations.include?(conversation_pair)
+    unique_conversations << conversation_pair
+    conversation = Conversation.create(
+      user_one_id: conversation_pair[0],
+      user_two_id: conversation_pair[1]
+    )
+    max_convo_id = conversation.id if conversation.id > max_convo_id
+  end
+
+end
+
+# seed 1000 messages
+
+500.times do
+
+  random_conversation = rand((max_convo_id-99)..max_convo_id)
+  conversation = Conversation.find(random_conversation)
+
+  if rand(2) == 1
+    Message.create(
+      author_id: conversation.started_user.id,
+      thread_id: conversation.id,
+      body: Faker::Hipster.sentence
+    )
+  else
+    Message.create(
+      author_id: conversation.received_user.id,
+      thread_id: conversation.id,
+      body: Faker::Hipster.sentence
+    )
+  end
+end
 
 conversation1 = Conversation.create(
   user_one_id: user1.id,
@@ -334,56 +393,3 @@ Message.create(
   thread_id: conversation2.id,
   body: "pls"
 )
-
-unique_conversations = []
-max_convo_id = 0
-
-while unique_conversations.length < 100 do
-
-  rand_user_one = rand((max_id-99)..max_id)
-  rand_user_two = rand((max_id-99)..max_id)
-
-  while rand_user_two == rand_user_one
-    rand_user_two = rand((max_id-99)..max_id)
-  end
-
-  if unique_conversations.length % 25 == 0
-    conversation_pair = [user1.id, rand_user_two]
-  elsif unique_conversations.length % 24 == 0
-    conversation_pair = [rand_user_one, user1.id]
-  else
-    conversation_pair = [rand_user_one, rand_user_two]
-  end
-
-  unless unique_conversations.include?(conversation_pair)
-    unique_conversations << conversation_pair
-    conversation = Conversation.create(
-      user_one_id: conversation_pair[0],
-      user_two_id: conversation_pair[1]
-    )
-    max_convo_id = conversation.id if conversation.id > max_convo_id
-  end
-
-end
-
-# seed 1000 messages
-
-1000.times do
-
-  random_conversation = rand((max_convo_id-99)..max_convo_id)
-  conversation = Conversation.find(random_conversation)
-
-  if rand(2) == 1
-    Message.create(
-      author_id: conversation.started_user.id,
-      thread_id: conversation.id,
-      body: Faker::Hipster.sentence
-    )
-  else
-    Message.create(
-      author_id: conversation.received_user.id,
-      thread_id: conversation.id,
-      body: Faker::Hipster.sentence
-    )
-  end
-end
