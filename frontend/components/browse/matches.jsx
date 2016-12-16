@@ -121,7 +121,7 @@ class Matches extends React.Component {
 
     const multiplied = currentUserPercent * otherUserPercent;
     const root = commonQuestions.length;
-    let matchPercent = Math.floor((Math.sqrt(multiplied) - (1 / root)) * 100);
+    let matchPercent = Math.floor((Math.sqrt(multiplied) - (1 / (2 * root))) * 100);
 
     if (matchPercent < 0) {
       matchPercent = 0;
