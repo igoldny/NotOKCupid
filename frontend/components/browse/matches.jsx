@@ -200,10 +200,10 @@ class Matches extends React.Component {
       }
     });
 
-    if (!userAcceptables.includes(otherUserAnswer)) {
-      return 0;
-    } else {
+    if (userAcceptables.includes(otherUserAnswer)) {
       return userImportance;
+    } else {
+      return 0;
     }
 
   }
