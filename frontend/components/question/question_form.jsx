@@ -186,9 +186,9 @@ class QuestionForm extends React.Component {
               <input
                 id="importance-answer-3"
                 name="importance-answer"
-                value={ 75 }
+                value={ 50 }
                 type="radio"
-                checked={ this.state.importance == 75 }
+                checked={ this.state.importance == 50 }
                 onClick={ this.handleImportance }
                 />
               <div className="importance-bar"></div>

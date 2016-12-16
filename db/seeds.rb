@@ -163,7 +163,7 @@ Question.all.each do |question|
   answer_num = question.answers.length
   rand_answer = rand(answer_num)
   acceptable_length = rand(1..answer_num)
-  importance_amounts = [1, 10, 75]
+  importance_amounts = [1, 10, 50]
   rand_importance = rand(3)
   acceptables = []
 
@@ -278,7 +278,7 @@ while total < 200 do
       answer_num = question.answers.length
       rand_answer = rand(answer_num)
       acceptable_length = rand(1..2)
-      importance_amounts = [1, 10, 75]
+      importance_amounts = [1, 10, 50]
       rand_importance = rand(3)
       acceptables = []
 

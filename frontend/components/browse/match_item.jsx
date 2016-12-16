@@ -38,9 +38,9 @@ class MatchItem extends React.Component {
   }
 
   matchColor() {
-    if (this.props.matchPercentage > 65) {
+    if (this.props.matchPercentage > 60) {
       return " green";
-    } else if (this.props.matchPercentage > 35) {
+    } else if (this.props.matchPercentage > 40) {
       return " orange";
     } else {
       return " red";
