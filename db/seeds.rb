@@ -361,9 +361,9 @@ while unique_conversations.length < 100 do
       user_one_id: conversation_pair[0],
       user_two_id: conversation_pair[1]
     )
+    max_convo_id = conversation.id if conversation.id > max_convo_id
   end
 
-  max_convo_id = conversation.id if conversation.id > max_convo_id
 end
 
 # seed 1000 messages

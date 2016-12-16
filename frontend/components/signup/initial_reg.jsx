@@ -11,8 +11,8 @@ class InitialRegistration extends React.Component {
     this.state = {
       regStage: 0,
       email: "",
-      gender: "straight",
-      sexuality: "woman",
+      gender: "woman",
+      sexuality: "straight",
       age: "",
       location: "",
       errors: false,
