@@ -38,18 +38,18 @@ class Matches extends React.Component {
   }
 
   minAge() {
-    if (this.props.currentUser.age - 7 < 18) {
+    if (this.props.currentUser.age - 20 < 18) {
       return 18;
     } else {
-      return this.props.currentUser.age - 7;
+      return this.props.currentUser.age - 20;
     }
   }
 
   maxAge(user) {
-    if (this.props.currentUser.age + 7 > 150) {
+    if (this.props.currentUser.age + 20 > 150) {
       return 150;
     } else {
-      return this.props.currentUser.age + 7;
+      return this.props.currentUser.age + 20;
     }
   }
 
