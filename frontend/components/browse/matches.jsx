@@ -8,7 +8,7 @@ class Matches extends React.Component {
     super(props);
 
     this.state = {
-      distance: 100000,
+      distance: 500,
       sortBy: "match percentage",
       minAge: 0,
       maxAge: 0
@@ -33,7 +33,7 @@ class Matches extends React.Component {
     this.props.fetchUsers(this.state.distance);
     this.props.fetchLikes(this.props.currentUser.id);
     this.props.fetchQuestions();
-    this.setState({ minAge: this.minAge(), maxAge: this.maxAge() });
+    this.setState({ minAge: this.minAge(), maxAge: this.maxAge(), distance: 500 });
   }
 
   minAge() {
@@ -245,7 +245,7 @@ class Matches extends React.Component {
   distanceOptions() {
     return (
       <select className="sort-dropdown" onChange={ this.handleDistance }>
-        <option value="100000">Any</option>
+        <option value="500">Any</option>
         <option value="2">2</option>
         <option value="5">5</option>
         <option value="10">10</option>
@@ -259,7 +259,7 @@ class Matches extends React.Component {
     if (!this.props.currentUser) {
       return null;
     }
-    
+
     if (this.matchListItems()) {
       return (
         <div className="browse-main">

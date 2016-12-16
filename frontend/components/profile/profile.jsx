@@ -82,8 +82,11 @@ class Profile extends React.Component {
     e.preventDefault();
     let existingThread = {};
 
+
     Object.keys(this.props.conversations).forEach((conversation) => {
-      if (
+      if (conversation === "order") {
+        return;
+      } else if (
         this.props.conversations[conversation].started_user.id === this.props.profile.id ||
         this.props.conversations[conversation].received_user.id === this.props.profile.id
       ) {
