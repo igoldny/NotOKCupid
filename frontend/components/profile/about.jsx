@@ -67,7 +67,7 @@ class About extends React.Component {
               />
             <AboutAnswer
               dataName="message_if"
-              answerTitle="You should slide into my DM's if"
+              answerTitle="You should message me if"
               answerText={ this.props.profile.message_if }
               currentUser={ this.props.currentUser }
               profile={ this.props.profile }
