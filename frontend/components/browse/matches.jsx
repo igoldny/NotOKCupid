@@ -298,7 +298,7 @@ class Matches extends React.Component {
       return null;
     }
 
-    if (this.matchListItems()) {
+    if (this.props.users) {
       return (
         <div className="browse-main">
           {this.preferences()}

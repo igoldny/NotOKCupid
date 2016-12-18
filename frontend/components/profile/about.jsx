@@ -39,7 +39,7 @@ class About extends React.Component {
               placeHolder="Go on, brag a little (or a lot). We won't judge (yes we will)."
               />
             <AboutAnswer
-              dataName="favorite"
+              dataName="favorites"
               answerTitle="Favorite coding languages, books, anything"
               answerText={ this.props.profile.favorites }
               currentUser={ this.props.currentUser }
