@@ -28,6 +28,7 @@ class Matches extends React.Component {
     this.minAge = this.minAge.bind(this);
     this.maxAge = this.maxAge.bind(this);
     this.usernameSort = this.usernameSort.bind(this);
+    this.display = this.display.bind(this);
   }
 
   componentDidMount() {
@@ -293,33 +294,37 @@ class Matches extends React.Component {
     );
   }
 
+  display() {
+    if (this.matchListItems().length === 0) {
+      return <Spinner />;
+    } else {
+      return this.matchListItems();
+    }
+  }
+
   render(){
     if (!this.props.currentUser) {
       return null;
     }
 
-    if (this.props.users) {
-      return (
-        <div className="browse-main">
-          {this.preferences()}
-          <div className="sort-box group">
-            <div className="sort-text-container">Sort by:
-              {this.sortOptions()}
-            </div>
-            <div className="distance-container">Distance:
-              {this.distanceOptions()}
-            </div>
+    return (
+      <div className="browse-main">
+        {this.preferences()}
+        <div className="sort-box group">
+          <div className="sort-text-container">Sort by:
+            {this.sortOptions()}
           </div>
-          <div className="match-container">
-            <ul className="group">
-              {this.matchListItems()}
-            </ul>
+          <div className="distance-container">Distance:
+            {this.distanceOptions()}
           </div>
         </div>
-      );
-    } else {
-      return <Spinner />;
-    }
+        <div className="match-container">
+          <ul className="group">
+            {this.display()}
+          </ul>
+        </div>
+      </div>
+    );
   }
 }
 
