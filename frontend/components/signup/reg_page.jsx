@@ -50,9 +50,6 @@ class RegPage extends React.Component {
               </div>
             </div>
             <InitialRegistrationContainer />
-            <div className="final-caption">
-              <a href="#">{"Want more privacy? Sign up for an Incognito account. >"}</a>
-            </div>
           </div>
         </div>
         <div className="bottom-section group">
