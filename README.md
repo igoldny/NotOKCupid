@@ -14,7 +14,7 @@ NotOKCupid is a full-stack web application inspired by OKCupid, with a twist.  N
 
 ### User CRUD (minus the D)
 
-Users that navigate to NotOKCupid are prompted by an easy to follow log in/sign up page in which they can walk through the steps to find love (or not).  For existing users, the sign in button in the top right prompts a log in modal to render on the screen.  After logging in, users are directed to the browse page (more information below).  For users looking to sign up, they may choose a gender and sexuality, followed by some general information about themselves including their age and location.  Last but not least, they are able to choose a username and password (a unique username and password greater than 6 characters, obviously).  From that point on, users are directed to the profile page to fill out information to improve their match percentages. 
+Users that navigate to NotOKCupid are prompted by an easy to follow log in/sign up page in which they can walk through the steps to find love (or not).  For existing users, the sign in button in the top right prompts a log in modal to render on the screen.  After logging in, users are directed to the browse page (more information below).  For users looking to sign up, they may choose a gender and sexuality, followed by some general information about themselves including their age and location.  Last but not least, they are able to choose a username and password (a unique username and password greater than 6 characters, obviously).  From that point on, users are directed to the profile page to fill out information to improve their match percentages.
 
 ### Profile Page
 
@@ -42,7 +42,7 @@ On the messages page, users can view all of their received and sent converations
 
 ![Alt text](/app/assets/images/browse_page.png)
 
-The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age.  **Please disregard the pictures of young people in the screenshot, as they are just random seeds pulled from the internet!**  Users must, in fact, be over 18 years old to sign up.
+The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age. 
 
 
 ## Future Directions for the Project
