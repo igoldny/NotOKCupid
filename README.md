@@ -14,7 +14,7 @@ NotOKCupid is a full-stack web application inspired by OKCupid, with a twist.  N
 
 ### User CRUD (minus the D)
 
-Users that navigate to NotOKCupid are prompted by an easy to follow log in/sign up page in which they can walk through the steps to find love (or not).  For existing users, the sign in button in the top right prompts a log in modal to render on the screen.  After logging in, users are directed to the browse page (more information below).  For users looking to sign up, they may choose a gender and sexuality, followed by some general information about themselves including their age and location.  Last but not least, they are able to choose a username and password (a unique username and password greater than 6 characters, obviously).  From that point on, users are directed to the profile page to fill out information to improve their match percentages.
+Users that navigate to NotOKCupid are prompted by an easy to follow log in/sign up page in which they can walk through the steps to find love (or not).  For existing users, the sign in button in the top right prompts a log in modal to render on the screen.  After logging in, users are directed to the browse page (more information below).  For users looking to sign up, they may choose a gender and sexuality, followed by some general information about themselves including their age and location.  Last but not least, they are able to choose a username and password (a unique username and password greater than 6 characters, obviously).  From that point on, users are directed to the profile page to fill out information to improve their match percentages. 
 
 ### Profile Page
 
