@@ -20,7 +20,7 @@ class RegPage extends React.Component {
   handleGuest(e) {
     e.preventDefault();
 
-    this.props.login({ username: "wesRobAndSin", password: "robinson"})
+    this.props.login({ username: "wesrobinson", password: "robinson" })
       .then((user) => {
         this.props.router.push('/');
       });
@@ -67,7 +67,7 @@ class RegPage extends React.Component {
               </p>
             </div>
             <div className="image-box">
-              <img src="http://www.ancientchildren.com/wp-content/uploads/2011/06/Apoplectic-Man-Thomas-Perkins.jpg"></img>
+              <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRtbQT3I-WfgEhn-rn2r1vs5u-VByAPVB0ZkfguuAMCYmNhp7fG2w"></img>
               <p>
                 {"Proceed with caution."}
               </p>

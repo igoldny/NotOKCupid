@@ -137,7 +137,7 @@ a56 = Answer.create(question_id: q20.id, body: "Visual / Artistic", order: 3)
 
 # seed 100 users
 
-prof_pics = HTTParty.get('https://pixabay.com/api/?key=4030205-09edb77b80f0f13b40ea34bea&q=face&image_type=photo')
+prof_pics = HTTParty.get('https://pixabay.com/api/?key=4030205-09edb77b80f0f13b40ea34bea&q=adult+face&image_type=photo')
 
 urls = prof_pics["hits"].map { |pic| pic["webformatURL"] }
 
@@ -188,41 +188,23 @@ end
 
 
 user2 = User.create(
-username: "wesRobAndSin",
+username: "wesrobinson",
 password: "robinson",
 sexuality: "straight",
 gender: "man",
 email: "wpr124@gmail.com",
 age: 25,
 location: "10463",
-summary: "I like to code.",
-doing: "Hopefully becoming a software developer. Or I'll be homeless. Or both.",
-good_at: "Soccer and stuff.",
-favorites: "Too many to say in one blurb.",
-thinking: "My future.",
-friday: "With my girlfriend.",
-message_if: "Don't message me. I'm just a seed!",
+summary: "I like to code.  I'm also looking for a job as a developer, so if you're an employer please check out my portfolio page at www.wesleyrobinson.me!",
+doing: "Hopefully become a software developer.",
+good_at: "Soccer, trading, and watching good movies or TV shows!.",
+favorites: "Favorite book is A Thousand Splendid Suns. Favorite coding languages are Ruby && JavaScript.",
+thinking: "What I can do to better myself.",
+friday: "Probably with my girlfriend, either hanging at home or with friends!",
+message_if: "Don't message me. I'm just a seed! Contact me at wpr124@gmail.com.",
 image: File.open("#{Rails.root}/app/assets/images/wes_headshot.jpg")
 )
 
-
-user3 = User.create(
-username: "ivyloren",
-password: "ivyloren",
-sexuality: "straight",
-gender: "woman",
-email: "ivy@ivy.com",
-age: 25,
-location: 10463,
-summary: "I am dating Wes. We are the same human being",
-doing: "Traveling and living! Oh, and working at Yelp on the side.",
-good_at: "Scrapbooking and understanding people.",
-favorites: "A Thousand Splendid Suns.",
-thinking: "Pizza",
-friday: "Hangin' with Wes.",
-message_if: "Don't message, I'm taken!",
-prof_pic_id: 3
-)
 
 sexualities = ["gay", "straight", "bisexual"]
 zips = ["10026", "10027", "10030", "10037", "10039",
