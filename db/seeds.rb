@@ -301,9 +301,9 @@ while unique_conversations.length < 100 do
   end
 
   if unique_conversations.length % 49 == 0
-    conversation_pair = [user1.id, rand_user_two]
+    conversation_pair = [user2.id, rand_user_two]
   elsif unique_conversations.length % 48 == 0
-    conversation_pair = [rand_user_one, user1.id]
+    conversation_pair = [rand_user_one, user2.id]
   else
     conversation_pair = [rand_user_one, rand_user_two]
   end
@@ -342,41 +342,24 @@ end
 end
 
 conversation1 = Conversation.create(
-  user_one_id: user1.id,
-  user_two_id: user3.id
-)
-
-conversation2 = Conversation.create(
   user_one_id: user2.id,
   user_two_id: user1.id
 )
 
 Message.create(
-  author_id: user1.id,
-  thread_id: conversation1.id,
-  body: "hey ivy!"
-)
-
-Message.create(
-  author_id: user3.id,
-  thread_id: conversation1.id,
-  body: "hey guest, what's up?"
-)
-
-Message.create(
   author_id: user2.id,
-  thread_id: conversation2.id,
+  thread_id: conversation1.id,
   body: "sup dood"
 )
 
 Message.create(
   author_id: user2.id,
-  thread_id: conversation2.id,
+  thread_id: conversation1.id,
   body: "answer me bro"
 )
 
 Message.create(
   author_id: user2.id,
-  thread_id: conversation2.id,
+  thread_id: conversation1.id,
   body: "pls"
 )
