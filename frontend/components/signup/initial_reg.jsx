@@ -45,7 +45,7 @@ class InitialRegistration extends React.Component {
     const currentErrors = {};
 
     if (isNaN(this.state.age) || this.state.age < 18 || this.state.age > 150) {
-      currentErrors.age_errors = "Please enter a valid age.";
+      currentErrors.age_errors = "Please enter a valid age (over 18).";
       currentErrors.errors = true;
     }
     if (isNaN(this.state.location) || this.state.location.length !== 5) {
