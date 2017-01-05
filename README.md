@@ -2,7 +2,7 @@
 
 [NotOKCupid Live](https://notokcupid.herokuapp.com)
 
-NotOKCupid is a full-stack web application inspired by OKCupid, with a twist.  NotOKCupid's matching algorithm matches users based on their incompatibility, because sometimes the worst love matches turn out to be the best.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.  
+NotOKCupid is a full-stack web application inspired by OKCupid, with a twist.  NotOKCupid's matching algorithm matches users based on their incompatibility, because sometimes the worst love matches turn out to be the best.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and ReactJS with a Redux architectural framework on the frontend.  
 
 
 
@@ -42,7 +42,7 @@ On the messages page, users can view all of their received and sent converations
 
 ![Alt text](/app/assets/images/browse_page.png)
 
-The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age. 
+The main page of the project, where users are directed after log in, is the browse page.  On this page, users are displayed their matches.  They can set a distance to search users by, as well as a sorting method.  The page opens with matches sorted by match percentage, but users can also choose to sort by username and age.
 
 
 ## Future Directions for the Project
