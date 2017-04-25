@@ -12,4 +12,3 @@ json.favorites @user.favorites
 json.thinking @user.thinking
 json.friday @user.friday
 json.message_if @user.message_if
-json.image_url asset_path(@user.image.url)

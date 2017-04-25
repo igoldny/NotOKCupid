@@ -1,19 +1,11 @@
 .content-questions {
   position: relative;
   padding-top: 30px;
-  min-height: 100%;
   width: 1000px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .main-questions {
-  width: 560px;
-  padding-right: 50px;
-  float: left;
-  position: relative;
+
 }
 
 .answered-questions {

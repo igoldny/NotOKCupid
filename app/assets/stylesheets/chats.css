@@ -8,8 +8,6 @@
 }
 
 .chat-container {
-  margin: 0 200px 10px 200px;
-  min-width: 600px;
   height: 350px;
   background-color: #fff;
   padding: 20px;
@@ -49,8 +47,6 @@
 }
 
 .chat-input {
-  margin: 0 200px 10px 200px;
-  min-width: 640px;
   border-radius: 5px;
 }
 

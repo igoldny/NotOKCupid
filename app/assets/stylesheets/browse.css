@@ -78,7 +78,7 @@
 }
 
 .browse-large {
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
 .browse-smaller {
@@ -92,7 +92,6 @@
 }
 
 .sort-box {
-  width: 900px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -100,7 +99,6 @@
 }
 
 .sort-text-container {
-  float: right;
   padding: 10px 20px;
   border-radius: 2px;
   margin-right: 20px;
@@ -108,7 +106,6 @@
 }
 
 .distance-container {
-  float: right;
   padding: 10px 20px;
   border-radius: 2px;
   margin-right: 20px;
@@ -126,7 +123,6 @@
 }
 
 .match-container {
-  width: 900px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
