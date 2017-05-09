@@ -8,5 +8,6 @@
     json.sexuality user.sexuality
     json.age user.age
     json.location user.location
+    json.image_url asset_path(user.image.url)
   end
 end
