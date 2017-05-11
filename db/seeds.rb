@@ -14,126 +14,97 @@ Like.destroy_all
 Answer.destroy_all
 Response.destroy_all
 
-
-
   # seed question and answers
-
-q1 = Question.create(title: "Could you date someone who was really messy?")
-
-a1 = Answer.create(question_id: q1.id, body: "Yes", order: 1)
-a2 = Answer.create(question_id: q1.id, body: "No", order: 2)
-
-q2 = Question.create(title: "Is astrological sign at all important in a match?")
-
-a3 = Answer.create(question_id: q2.id, body: "Yes", order: 1)
-a4 = Answer.create(question_id: q2.id, body: "No", order: 2)
-
-q3 = Question.create(title: "How willing are you to meet someone from NotOKCupid in person?")
-
-a5 = Answer.create(question_id: q3.id, body: "Very willing!", order: 1)
-a6 = Answer.create(question_id: q3.id, body: "Hesitant, but willing to give it a shot.", order: 2)
-a7 = Answer.create(question_id: q3.id, body: "Not very willing unless I'm with a friend.", order: 3)
-
-q4 = Question.create(title: "Have you smoked a cigarette in the last 6 months?")
-
-a8 = Answer.create(question_id: q4.id, body: "Yes", order: 1)
-a9 = Answer.create(question_id: q4.id, body: "No", order: 2)
-
-q5 = Question.create(title: "Would you date a programmer?")
-
-a10 = Answer.create(question_id: q5.id, body: "Yes", order: 1)
-a11 = Answer.create(question_id: q5.id, body: "No", order: 2)
-a12 = Answer.create(question_id: q5.id, body: "Maybe, if he could properly seed my database", order: 3)
-
-q6 = Question.create(title: "Which would you rather be?")
-
-a13 = Answer.create(question_id: q6.id, body: "Normal", order: 1)
-a14 = Answer.create(question_id: q6.id, body: "Weird", order: 2)
-
-q7 = Question.create(title: "Could you date someone who does drugs?")
-
-a15 = Answer.create(question_id: q7.id, body: "Yes", order: 1)
-a16 = Answer.create(question_id: q7.id, body: "No", order: 2)
-a17 = Answer.create(question_id: q7.id, body: "Only soft drugs like marijuana.", order: 3)
-
-q8 = Question.create(title: "Would you prefer to date someone of your own skin color / racial background?")
-
-a18 = Answer.create(question_id: q8.id, body: "Yes", order: 1)
-a19 = Answer.create(question_id: q8.id, body: "No", order: 2)
-
-q9 = Question.create(title: "About how long do you want your next relationship to last?")
-
-a20 = Answer.create(question_id: q9.id, body: "One night ;)", order: 1)
-a21 = Answer.create(question_id: q9.id, body: "6 months", order: 2)
-a22 = Answer.create(question_id: q9.id, body: "Over 1 year", order: 3)
-a23 = Answer.create(question_id: q9.id, body: "Forever", order: 4)
-
-q10 = Question.create(title: "Would you consider sleeping with someone on the first date?")
-
-a24 = Answer.create(question_id: q10.id, body: "Yes", order: 1)
-a25 = Answer.create(question_id: q10.id, body: "No", order: 2)
-
-q11 = Question.create(title: "Would you consider having an open relationship(i.e., one where you can see other people)?")
-
-a26 = Answer.create(question_id: q11.id, body: "Yes", order: 1)
-a27 = Answer.create(question_id: q11.id, body: "No", order: 2)
-a28 = Answer.create(question_id: q11.id, body: "I'd be willing to try it out.", order: 3)
-
-q12 = Question.create(title: "Are you currently employed?")
-
-a29 = Answer.create(question_id: q12.id, body: "Yes", order: 1)
-a30 = Answer.create(question_id: q12.id, body: "No", order: 2)
-
-q13 = Question.create(title: "In a relationship, who do you prefer to be taller?")
-
-a31 = Answer.create(question_id: q13.id, body: "Yes", order: 1)
-a32 = Answer.create(question_id: q13.id, body: "No", order: 2)
-a33 = Answer.create(question_id: q13.id, body: "Don't care", order: 3)
-
-q14 = Question.create(title: "Rate your self-confidence:")
-
-a34 = Answer.create(question_id: q14.id, body: "Extremely high", order: 1)
-a35 = Answer.create(question_id: q14.id, body: "Higher than average", order: 2)
-a36 = Answer.create(question_id: q14.id, body: "Around average", order: 3)
-a37 = Answer.create(question_id: q14.id, body: "Below average", order: 4)
-a38 = Answer.create(question_id: q14.id, body: "Very low", order: 5)
-
-q15 = Question.create(title: "How important is money/wealth for you in a match?")
-
-a39 = Answer.create(question_id: q15.id, body: "Very important", order: 1)
-a40 = Answer.create(question_id: q15.id, body: "Relatively important", order: 2)
-a41 = Answer.create(question_id: q15.id, body: "Not important", order: 3)
-
-q16 = Question.create(title: "How important is religion/God in your life?")
-
-a42 = Answer.create(question_id: q16.id, body: "Very important", order: 1)
-a43 = Answer.create(question_id: q16.id, body: "Relatively important", order: 2)
-a44 = Answer.create(question_id: q16.id, body: "Not important", order: 3)
-
-q17 = Question.create(title: "Do you enjoy discussing politics?")
-
-a45 = Answer.create(question_id: q17.id, body: "Yes", order: 1)
-a46 = Answer.create(question_id: q17.id, body: "No", order: 2)
-a47 = Answer.create(question_id: q17.id, body: "Only if we share similar views", order: 3)
-
-q18 = Question.create(title: "Are you a cat person or a dog person?")
-
-a48 = Answer.create(question_id: q18.id, body: "Cat", order: 1)
-a49 = Answer.create(question_id: q18.id, body: "Dog", order: 2)
-a50 = Answer.create(question_id: q18.id, body: "Both", order: 3)
-a51 = Answer.create(question_id: q18.id, body: "Neither", order: 4)
-
-q19 = Question.create(title: "Have you ever traveled around another country alone?")
-
-a52 = Answer.create(question_id: q19.id, body: "Yes", order: 1)
-a53 = Answer.create(question_id: q19.id, body: "No", order: 2)
-
-q20 = Question.create(title: "Which of the following types of intelligence do you value most?")
-
-a54 = Answer.create(question_id: q20.id, body: "Logical / Mathematical", order: 1)
-a55 = Answer.create(question_id: q20.id, body: "Social / Interpersonal", order: 2)
-a56 = Answer.create(question_id: q20.id, body: "Visual / Artistic", order: 3)
-
+  q1= Question.create(title:'תנוחה אהובה')
+  a1= Answer.create(question_id: q1.id, body:'דוגי',order:1)
+  a2= Answer.create(question_id: q1.id, body:'בן / בת הזוג בסלון ואת/ה רואה פורנו',order:2)
+  a3= Answer.create(question_id: q1.id, body:'מסיונרי',order:3)
+  a4= Answer.create(question_id: q1.id, body:'69',order:4)
+  a5= Answer.create(question_id: q1.id, body:'Speat',order:5)
+  a6= Answer.create(question_id: q1.id, body:'42',order:6)
+  a7= Answer.create(question_id: q1.id, body:'reverse cowgirl',order:7)
+  a8= Answer.create(question_id: q1.id, body:'roast',order:8)
+  q2= Question.create(title:'אני אדם של')
+  a9= Answer.create(question_id: q2.id, body:'עיניים',order:1)
+  a10= Answer.create(question_id: q2.id, body:'משולש',order:2)
+  a11= Answer.create(question_id: q2.id, body:'חיוך',order:3)
+  a12= Answer.create(question_id: q2.id, body:'חור של תחת',order:4)
+  a13= Answer.create(question_id: q2.id, body:'ריסים',order:5)
+  a14= Answer.create(question_id: q2.id, body:'נחיר שמאל',order:6)
+  a15= Answer.create(question_id: q2.id, body:'כרס',order:7)
+  a16= Answer.create(question_id: q2.id, body:'פטמות',order:8)
+  a17= Answer.create(question_id: q2.id, body:'החלק האחורי של הברך',order:9)
+  q3= Question.create(title:'איפה היית רוצה לסיים את היום שלך במידברן')
+  a18= Answer.create(question_id: q3.id, body:'צפייה על השקיעה',order:1)
+  a19= Answer.create(question_id: q3.id, body:'השתתפות באורגיה המונית',order:2)
+  a20= Answer.create(question_id: q3.id, body:'לשכב על אדמת המדבר ולהתבונן בכוכבים',order:3)
+  a21= Answer.create(question_id: q3.id, body:'מסטול',order:4)
+  q4= Question.create(title:'מה הפנטזיה הכי גדולה שלך?')
+  a22= Answer.create(question_id: q4.id, body:'להריח את בית השחי של הבן זוג',order:1)
+  a23= Answer.create(question_id: q4.id, body:'להצליף בטוסיק',order:2)
+  a24= Answer.create(question_id: q4.id, body:'סקס בציבור',order:3)
+  a25= Answer.create(question_id: q4.id, body:'S&M',order:4)
+  q5= Question.create(title:'שנות ניסיון במידברן')
+  a26= Answer.create(question_id: q5.id, body:'1',order:1)
+  a27= Answer.create(question_id: q5.id, body:'2',order:2)
+  a28= Answer.create(question_id: q5.id, body:'3',order:3)
+  a29= Answer.create(question_id: q5.id, body:'4',order:4)
+  q6= Question.create(title:'פעילות מועדפת במידברן')
+  a30= Answer.create(question_id: q6.id, body:'סקס',order:1)
+  a31= Answer.create(question_id: q6.id, body:'לרקוד',order:2)
+  a32= Answer.create(question_id: q6.id, body:'לעשות סמים',order:3)
+  a33= Answer.create(question_id: q6.id, body:'לשתות אלכוהול',order:4)
+  a34= Answer.create(question_id: q6.id, body:'להכיר אנשים חדשים',order:5)
+  a35= Answer.create(question_id: q6.id, body:'אומנות',order:6)
+  q7= Question.create(title:'הסיכוי שאני אשכב עם מישהו/י במידברן הוא')
+  a36= Answer.create(question_id: q7.id, body:'100',order:1)
+  a37= Answer.create(question_id: q7.id, body:'75',order:2)
+  a38= Answer.create(question_id: q7.id, body:'50',order:3)
+  a39= Answer.create(question_id: q7.id, body:'25',order:4)
+  q8= Question.create(title:'האם אתה מחפש שותף לfree love')
+  a40= Answer.create(question_id: q8.id, body:'כן',order:1)
+  a41= Answer.create(question_id: q8.id, body:'לא',order:2)
+  a42= Answer.create(question_id: q8.id, body:'יש לי כבר',order:3)
+  q9= Question.create(title:'הגיפטינג שהכי ארצה לקבל')
+  a43= Answer.create(question_id: q9.id, body:'ספנקינג',order:1)
+  a44= Answer.create(question_id: q9.id, body:'עיסוי',order:2)
+  a45= Answer.create(question_id: q9.id, body:'נשיקה',order:3)
+  a46= Answer.create(question_id: q9.id, body:'חיבוק',order:4)
+  a47= Answer.create(question_id: q9.id, body:'שיחה מלב אל לב',order:5)
+  a48= Answer.create(question_id: q9.id, body:'גלידה',order:6)
+  q10= Question.create(title:'מה התכונה הכי חשובה אצל החמות שלך')
+  a49= Answer.create(question_id: q10.id, body:'שתכין אחלה חמין',order:1)
+  a50= Answer.create(question_id: q10.id, body:'שלא תתערב בחייך',order:2)
+  a51= Answer.create(question_id: q10.id, body:'שתהייה מילפית פתוחה להצעות',order:3)
+  q11= Question.create(title:'סמים אהובים')
+  a52= Answer.create(question_id: q11.id, body:'MD',order:1)
+  a53= Answer.create(question_id: q11.id, body:'גראס',order:2)
+  a54= Answer.create(question_id: q11.id, body:'פוסטינור',order:3)
+  a55= Answer.create(question_id: q11.id, body:'אקמול',order:4)
+  a56= Answer.create(question_id: q11.id, body:'אהבה',order:5)
+  q12= Question.create(title:'איזה ברנר אתה')
+  a57= Answer.create(question_id: q12.id, body:'סטלן',order:1)
+  a58= Answer.create(question_id: q12.id, body:'חרמן',order:2)
+  a59= Answer.create(question_id: q12.id, body:'בליין',order:3)
+  a60= Answer.create(question_id: q12.id, body:'אמן',order:4)
+  a61= Answer.create(question_id: q12.id, body:'בעל איבר מין קטן',order:5)
+  q13= Question.create(title:'לבוש מידברן אהוב')
+  a62= Answer.create(question_id: q13.id, body:'וואנזי',order:1)
+  a63= Answer.create(question_id: q13.id, body:'חצאית טוטו',order:2)
+  a64= Answer.create(question_id: q13.id, body:'עירום',order:3)
+  a65= Answer.create(question_id: q13.id, body:'לדים',order:4)
+  q14= Question.create(title:'איזה זין את/ה מעדיפ/ה')
+  a66= Answer.create(question_id: q14.id, body:'קצר וקולע',order:1)
+  a67= Answer.create(question_id: q14.id, body:'ארוך ומייגע',order:2)
+  a68= Answer.create(question_id: q14.id, body:'שמנמן ומזיע',order:3)
+  a69= Answer.create(question_id: q14.id, body:'עבה ומפתיע',order:4)
+  a70= Answer.create(question_id: q14.id, body:'לא רלוונטי',order:5)
+  q15= Question.create(title:'איזה פות את/ה מעדיף')
+  a71= Answer.create(question_id: q15.id, body:'וילון',order:1)
+  a72= Answer.create(question_id: q15.id, body:'פרסה',order:2)
+  a73= Answer.create(question_id: q15.id, body:'בארבי',order:3)
+  a74= Answer.create(question_id: q15.id, body:'צבעוני',order:4)
+  a75= Answer.create(question_id: q15.id, body:'פאף',order:5)
 
 # seed 100 users
 
