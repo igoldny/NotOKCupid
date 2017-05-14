@@ -110,6 +110,10 @@ class User < ActiveRecord::Base
     User.within(miles, origin: self)
   end
 
+  def all()
+    User.all
+  end
+
   private
 
   def ensure_session_token
