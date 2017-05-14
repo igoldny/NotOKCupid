@@ -99,9 +99,6 @@ class Questions extends React.Component {
       return (
         <div className="content-questions group">
           <div className="main-questions">
-            {this.questionFormHeader()}
-            {this.questionFormRender()}
-            <h2 className="show-questions-header">Show Questions</h2>
             <div className="answered-questions">
               {this.answeredQuestionRender()}
             </div>

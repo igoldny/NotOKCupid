@@ -24,11 +24,6 @@ class NavBar extends React.Component {
             <h1 className="nav-logo">
               <a href="/">NotOK</a>
             </h1>
-            <ul className="nav-left group">
-              <li className="nav-left-link">
-                <a href="/">Browse Matches</a>
-              </li>
-            </ul>
           </div>
           <div>
             <ul className="nav-right group">
