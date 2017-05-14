@@ -309,15 +309,6 @@ class Matches extends React.Component {
 
     return (
       <div className="browse-main">
-        {this.preferences()}
-        <div className="sort-box group">
-          <div className="sort-text-container">Sort by:
-            {this.sortOptions()}
-          </div>
-          <div className="distance-container">Distance:
-            {this.distanceOptions()}
-          </div>
-        </div>
         <div className="match-container">
           <ul className="group">
             {this.display()}
