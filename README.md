@@ -4,6 +4,47 @@
 
 NotOKCupid is a full-stack web application inspired by OKCupid, with a twist.  NotOKCupid's matching algorithm matches users based on their incompatibility, because sometimes the worst love matches turn out to be the best.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and ReactJS with a Redux architectural framework on the frontend.  
 
+# Install
+
+first install with apt-get (ruby, node, postgresql, git)
+
+then git clone:
+```
+$ git clone https://github.com/igoldny/NotOKCupid.git
+$ cd NotOKCupid
+```
+
+this install bundler and nokogiri with gem (nokogiri might be tricky)
+```
+$ gem install bundler
+$ gem install nokogiri
+```
+
+then install ruby packages with bundler
+```
+$ bundler install
+```
+
+and node packages with npm
+```
+$ npm install
+```
+
+make sure postgres is running
+```
+$ postgres --help
+```
+
+run database db:migrations
+```
+$ rake db:reset db:migrate
+```
+
+and you ready to go.
+to start the server
+```
+$ rails server
+```
 
 
 ## Features & Implementation
