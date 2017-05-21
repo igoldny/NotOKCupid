@@ -1,32 +1,25 @@
 .background {
   color: #fff;
   background: #104da1;
-  min-width: 880px;
 }
 
 .reg-header {
   position: relative;
-  height: 201px;
   padding-top: 20px;
   margin-bottom: 30px;
 }
 
 .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
+  display: block;
   font-family: 'Oleo Script Swash Caps';
   color: #5981ce;
   font-size: 60px;
+  text-align: center;
   -webkit-text-stroke: 2px #e2f0fb;
 }
 
 .login-header {
-  float: right;
-  margin-top: 20px;
-  margin-right: 8px;
-  text-align: right;
+  text-align: center;
 }
 
 .demo-button {
@@ -55,18 +48,16 @@
 }
 
 .catchphrase {
-  margin: 0 auto 30px;
+  margin: 40px;
   text-align: center;
   font-weight: 300;
-  width: 660px;
   font-size: 24px;
 }
 
 .smaller-caption {
-  margin: 0 auto 30px;
+  margin: 15px;
   text-align: center;
   font-weight: 300;
-  width: 660px;
   font-size: 18px;
 }
 
@@ -78,7 +69,7 @@
 }
 
 .prefix {
-  display: inline-block;
+  display: block;
   vertical-align: top;
   margin-right: -4px;
   padding-right: 20px;
@@ -95,11 +86,11 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  display: inline-block;
+  display: block;
   vertical-align: top;
   width: 230px;
   height: 60px;
-  margin-right: 15px;
+  margin: 15px auto;
   font-size: 18px;
   background-color: #3260c7;
   color: #fff;
@@ -134,7 +125,6 @@
 
 .image-container {
   text-align: center;
-  min-width: 880px;
   color: #3260c7;
   display: flex;
   justify-content: center;

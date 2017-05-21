@@ -3,7 +3,6 @@
 
 .site-nav {
   border-bottom: 1px solid rgba(157,186,242,0.25);
-  min-width: 940px;
   height: 70px;
   background: #104da1;
 
@@ -83,23 +82,16 @@
 }
 
 .profile-header {
-  padding-top: 50px;
-  margin-bottom: 30px;
+  padding: 10px;
   background-image: linear-gradient(#104da1, #0f4693);
 }
 
 .inner-header {
-  position: relative;
-  padding-left: 80px;
-  padding-right: 60px;
-  margin: 0 auto;
-  width: 1000px;
+
 }
 
 .user-info {
-  float: left;
-  margin-left: -30px;
-  margin-bottom: -30px;
+
 }
 
 .like-section {
@@ -195,7 +187,6 @@
 }
 
 .profile-tabs {
-  width: 1000px;
   padding-left: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -225,9 +216,8 @@
 
 
 .profile-actions {
-  float: right;
-  margin-top: 67px;
   color: #e4edfd;
+  margin: 30px 10px;
 }
 
 .profile-like-button {
