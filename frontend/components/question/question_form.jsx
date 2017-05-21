@@ -224,9 +224,6 @@ class QuestionForm extends React.Component {
           <div className="answers-container">
             <form className="answers-form">
               {this.renderAnswers()}
-              {this.renderAcceptables()}
-              {this.renderImportance()}
-              {this.renderExplanation()}
               <input type="submit" value="Answer" className="answer-button" onClick={ this.handleSubmit }/>
             </form>
           </div>
