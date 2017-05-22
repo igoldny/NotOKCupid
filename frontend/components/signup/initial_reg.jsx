@@ -14,7 +14,7 @@ class InitialRegistration extends React.Component {
       gender: "woman",
       sexuality: "straight",
       age: "",
-      location: "",
+      location: "10001",
       errors: false,
       age_errors: "",
       zip_errors: "",

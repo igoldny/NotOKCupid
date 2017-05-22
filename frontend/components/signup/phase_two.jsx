@@ -19,13 +19,15 @@ const PhaseTwo = (props) => (
       className="phase-two-box"/>
     <p className="reg-errors">{props.age_errors}</p>
 
-    <label className="phase-two-label">Zip Code</label>
-    <input type="text"
-      value={props.location}
-      onChange={props.update("location")}
-      placeholder="e.g. 10001"
-      className="phase-two-box"/>
-    <p className="reg-errors">{props.zip_errors}</p><br></br>
+    <div style={{display: 'none'}}>
+      <label className="phase-two-label">Zip Code</label>
+      <input type="text"
+        value={props.location}
+        onChange={props.update("location")}
+        placeholder="e.g. 10001"
+        className="phase-two-box"/>
+      <p className="reg-errors">{props.zip_errors}</p><br></br>
+    </div>
 
     <input type="submit" value="Next" className="next-button" />
   </form>
