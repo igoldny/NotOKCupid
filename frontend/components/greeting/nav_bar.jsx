@@ -22,7 +22,7 @@ class NavBar extends React.Component {
         <nav className="site-nav group">
           <div>
             <h1 className="nav-logo">
-              <a href="/">NotOK</a>
+              <a href="/">Bermuda</a>
             </h1>
           </div>
           <div>
