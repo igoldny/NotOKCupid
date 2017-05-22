@@ -31,13 +31,10 @@ class RegPage extends React.Component {
       <div>
         <div className="background group">
           <div className="reg-header group">
-            <h1 className="logo">NotOKCupid</h1>
+            <div className="logo-image"></div>
             <div className="login-header">
               <button className="login-button" onClick={ this.handleClick } >
                 Sign In
-              </button>
-              <button className="demo-button" onClick={ this.handleGuest } >
-                Demo Login
               </button>
             </div>
           </div>

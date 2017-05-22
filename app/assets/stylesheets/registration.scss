@@ -1,12 +1,21 @@
 .background {
   color: #fff;
-  background: #104da1;
+  background: #1c4583;
 }
 
 .reg-header {
   position: relative;
   padding-top: 20px;
   margin-bottom: 30px;
+}
+
+.logo-image {
+  display: block;
+  width: 280px;
+  height: 300px;
+  margin: 0 auto;
+  background: image-url("logo.jpg");
+  background-size: cover;
 }
 
 .logo {
@@ -35,8 +44,8 @@
 .login-button {
   border: 1px solid #3260c7;
   border-radius: 3px;
-  padding: 10px 10px;
-  margin: 0 10px;
+  padding: 10px 50px;
+  margin: 20px 0 0;
 }
 
 .login-button:hover {
@@ -48,7 +57,7 @@
 }
 
 .catchphrase {
-  margin: 40px;
+  margin: 20px 40px 40px;
   text-align: center;
   font-weight: 300;
   font-size: 24px;
