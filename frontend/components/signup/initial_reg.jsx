@@ -14,7 +14,7 @@ class InitialRegistration extends React.Component {
       gender: "woman",
       sexuality: "straight",
       age: "",
-      location: "10001",
+      location: "",
       errors: false,
       age_errors: "",
       zip_errors: "",
@@ -42,40 +42,25 @@ class InitialRegistration extends React.Component {
   }
 
   checkForErrors(cb) {
-    const currentErrors = {};
-
-    if (isNaN(this.state.age) || this.state.age < 18 || this.state.age > 150) {
-      currentErrors.age_errors = "Please enter a valid age (over 18).";
-      currentErrors.errors = true;
-    }
-    if (isNaN(this.state.location) || this.state.location.length !== 5) {
-      currentErrors.zip_errors = "Please enter a valid zip code.";
-      currentErrors.errors = true;
-    }
-
-    if (Object.keys(currentErrors).length === 0) {
-      currentErrors.errors = false;
-      currentErrors.age_errors = "";
-      currentErrors.zip_errors = "";
-    }
+    const currentErrors = {
+      errors: false,
+      age_errors: "",
+      zip_errors: "",
+    };
 
     this.setState(currentErrors, cb);
   }
 
   checkToMoveOn() {
-    if (this.state.errors) {
-
-    } else {
-      this.setState({
-        email: this.state.email,
-        age: this.state.age,
-        location: this.state.location,
-        age_errors: "",
-        zip_errors: "",
-        errors: false,
-        regStage: 2,
-      });
-    }
+    this.setState({
+      email: this.state.email,
+      age: this.state.age,
+      location: this.state.location,
+      age_errors: "",
+      zip_errors: "",
+      errors: false,
+      regStage: 2,
+    });
   }
 
   handleSecondStage(e) {

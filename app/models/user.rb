@@ -31,20 +31,13 @@
 
 class User < ActiveRecord::Base
 
-  validates :username, :password_digest, :session_token, :email, presence: true
-  validates :username, :email, :session_token, uniqueness: true
+  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  validates :age, inclusion: { in: 18..150 }
-  validates :location, length: { is: 5 }
 
   attr_reader :password
 
-  geocoded_by :location
   after_initialize :ensure_session_token
-  after_validation :geocode, if: -> (obj) {
-    obj.location.present? and obj.location_changed?
-  }
-
   acts_as_mappable default_units: :miles,
                    distance_field_name: :distance,
                    lat_column_name: :latitude,

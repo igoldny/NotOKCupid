@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionFormContainer from './question_form_container';
+import AboutAnswer from './about_answer';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -99,6 +100,15 @@ class Questions extends React.Component {
       return (
         <div className="content-questions group">
           <div className="main-questions">
+            <AboutAnswer
+              dataName="summary"
+              answerTitle="About me"
+              answerText={ this.props.profile.summary || '' }
+              currentUser={ this.props.currentUser }
+              profile={ this.props.profile }
+              updateProfile={ this.props.updateProfile }
+              placeHolder="Write a little about yourself. Do it."
+              />
             {this.questionFormHeader()}
             {this.questionFormRender()}
             <h2 className="show-questions-header">Show Questions</h2>

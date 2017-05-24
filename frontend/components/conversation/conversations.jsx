@@ -9,6 +9,10 @@ class Conversations extends React.Component {
 
     this.receivedList = this.receivedList.bind(this);
     this.sentList = this.sentList.bind(this);
+
+    this.state = {
+      text: 'Refresh'
+    };
   }
 
   componentDidMount() {
@@ -53,6 +57,20 @@ class Conversations extends React.Component {
     );
   }
 
+  refresh() {
+    this.setState({
+      text: 'Loading...'
+    });
+
+    setTimeout(() => {
+      this.setState({
+        text: 'Refresh'
+      });
+    }, 5000);
+
+    this.props.fetchConversations();
+  }
+
   render() {
     if  (!this.props.currentUser) {
       return null;
@@ -65,6 +83,7 @@ class Conversations extends React.Component {
     return(
       <div className="main-messages">
         <div className="message-heading">
+          <button onClick={this.refresh.bind(this)}>{this.state.text}</button>
           <h1 className="messages-title">Messages</h1>
         </div>
         <TabsContainer

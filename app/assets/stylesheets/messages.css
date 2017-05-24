@@ -16,6 +16,14 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.message-heading button {
+  float: right;
+  background: #4ad44a;
+  color: white;
+  padding: 7px;
+  margin: 6px;
+}
+
 .messages-title {
   padding-bottom: 12px;
   height: 40px;

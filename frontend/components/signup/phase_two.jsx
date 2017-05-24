@@ -19,12 +19,11 @@ const PhaseTwo = (props) => (
       className="phase-two-box"/>
     <p className="reg-errors">{props.age_errors}</p>
 
-    <div style={{display: 'none'}}>
-      <label className="phase-two-label">Zip Code</label>
+    <div>
+      <label className="phase-two-label">Camp</label>
       <input type="text"
         value={props.location}
         onChange={props.update("location")}
-        placeholder="e.g. 10001"
         className="phase-two-box"/>
       <p className="reg-errors">{props.zip_errors}</p><br></br>
     </div>
