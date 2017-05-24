@@ -3,12 +3,14 @@ import React from 'react';
 const PhaseTwo = (props) => (
   <form onSubmit={props.submit}>
 
-    <label className="phase-two-label">Email</label>
-    <input type="text"
-      value={props.email}
-      onChange={props.update("email")}
-      placeholder="Email"
-      className="phase-two-box"/>
+    <div style={{display: 'none'}}>
+      <label className="phase-two-label">Email</label>
+      <input type="text"
+        value={props.email}
+        onChange={props.update("email")}
+        placeholder="Email"
+        className="phase-two-box"/>
+    </div>
 
 
     <label className="phase-two-label">Age</label>
@@ -24,6 +26,7 @@ const PhaseTwo = (props) => (
       <input type="text"
         value={props.location}
         onChange={props.update("location")}
+        placeholder="Camp"
         className="phase-two-box"/>
       <p className="reg-errors">{props.zip_errors}</p><br></br>
     </div>
