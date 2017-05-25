@@ -10,7 +10,7 @@ class InitialRegistration extends React.Component {
     super(props);
     this.state = {
       regStage: 0,
-      email: `${Math.random}@${Math.random}.com`,
+      email: `${Math.random()}@${Math.random()}.com`,
       gender: "woman",
       sexuality: "straight",
       age: "",
